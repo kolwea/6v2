@@ -1,53 +1,31 @@
-import * as THREE from 'three';
-import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
-import SplineLoader from '@splinetool/loader';
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+'use client'
+import { useEffect } from 'react';
+import Scene from './zenBackground';
+import { Canvas } from '@react-three/fiber'
+import { Kolker_Brush } from 'next/font/google';
+// import { animate } from './zenBackground';
 
-// camera
-const camera = new THREE.OrthographicCamera(window.innerWidth / - 2, window.innerWidth / 2, window.innerHeight / 2, window.innerHeight / - 2,  -100000, 100000);
-camera.position.set(-0.33, 151.42, 0.21);
-camera.quaternion.setFromEuler(new THREE.Euler(-1.57, 0, 0));
+export default function Dashboard() {
+  // useEffect(() => {
+  //   const keyDownHandler = (e: any) => {
+  //     console.log(`You pressed ${e.code}.`)
+  //   };
+  //   document.addEventListener("keydown", keyDownHandler);
 
-// scene
-const scene = new THREE.Scene();
+  //   // clean up
+  //   return () => {
+  //     document.removeEventListener("keydown", keyDownHandler);
+  //   };
+  // }, []);
 
-// spline scene
-const loader = new SplineLoader();
-loader.load(
-  'https://prod.spline.design/ly1fI3HPiUyHcpvY/scene.splinecode',
-  (splineScene) => {
-    scene.add(splineScene);
-  }
-);
+  return (
+    <div style={{ width: "100vw", height: "100vh" }}>
+      <Canvas >
+        <Scene />
+      </Canvas>
+    </div>
 
-// renderer
-const renderer = new THREE.WebGLRenderer({ antialias: true });
-renderer.setSize(window.innerWidth, window.innerHeight);
-renderer.setAnimationLoop(animate);
-document.body.appendChild(renderer.domElement);
-
-// scene settings
-renderer.shadowMap.enabled = true;
-renderer.shadowMap.type = THREE.PCFShadowMap;
-
-scene.background = new THREE.Color('#e1e1e1');
-renderer.setClearAlpha(1);
-
-// orbit controls
-const controls = new OrbitControls(camera, renderer.domElement);
-controls.enableDamping = true;
-controls.dampingFactor = 0.125;
-
-window.addEventListener('resize', onWindowResize);
-function onWindowResize() {
-  camera.left = window.innerWidth / - 2;
-  camera.right = window.innerWidth / 2;
-  camera.top = window.innerHeight / 2;
-  camera.bottom = window.innerHeight / - 2;
-  camera.updateProjectionMatrix();
-  renderer.setSize(window.innerWidth, window.innerHeight);
-}
-
-function animate(time) {
-  controls.update();
-  renderer.render(scene, camera);
+  )
 }
