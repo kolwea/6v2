@@ -1,25 +1,73 @@
 'use client'
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, useMemo } from 'react';
 import * as THREE from 'three';
+import { GLTFLoader } from 'three/examples/jsm/Addons.js';
+// import * as Logo from '../../models/gltf/sixEncolsedLogo.gltf'
 
 const ThreeScene: React.FC = () => {
     const containerRef = useRef<HTMLDivElement>(null);
 
+    const setupInitalScene = () => {
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        containerRef.current?.appendChild(renderer.domElement);
+        camera.position.z = 5;
+
+        return { scene, camera, renderer }
+    }
+
     useEffect(() => {
         if (typeof window !== 'undefined') {
-            const scene = new THREE.Scene();
-            const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-            const renderer = new THREE.WebGLRenderer();
-            renderer.setSize(window.innerWidth, window.innerHeight);
-            containerRef.current?.appendChild(renderer.domElement);
-            camera.position.z = 5;
+            const { scene, camera, renderer } = setupInitalScene()
 
             const geometry = new THREE.BoxGeometry();
             const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
             const cube = new THREE.Mesh(geometry, material);
-            scene.add(cube);
 
+            const loader = new GLTFLoader();
+
+            loader.load(
+                // resource URL
+                '/models/gltf/sixEncolsedLogo.gltf',
+                // called when the resource is loaded
+                function (gltf) {
+                    scene.add(gltf.scene);
+
+                    gltf.animations; // Array<THREE.AnimationClip>
+                    gltf.scene; // THREE.Group
+                    gltf.scenes; // Array<THREE.Group>
+                    gltf.cameras; // Array<THREE.Camera>
+                    gltf.asset; // Object
+
+                },
+                // called while loading is progressing
+                function (xhr) {
+
+                    console.log((xhr.loaded / xhr.total * 100) + '% loaded');
+
+                },
+                // called when loading has errors
+                function (error) {
+
+                    console.log('An error happened');
+
+                })
+
+            // scene.add(cube);
             renderer.render(scene, camera);
+
+            // Add this function inside the useEffect hook
+            const renderScene = () => {
+                cube.rotation.x += 0.01;
+                cube.rotation.y += 0.01;
+                renderer.render(scene, camera);
+                requestAnimationFrame(renderScene);
+            };
+
+            // Call the renderScene function to start the animation loop
+            renderScene();
         }
     }, []);
 
