@@ -48,7 +48,6 @@ const setupInitalSceneControls = (containerRef: React.RefObject<HTMLDivElement>)
 //     return model;
 // }
 
-
 const ThreeScene: React.FC = () => {
     const containerRef = useRef<HTMLDivElement>(null);
 
@@ -87,7 +86,7 @@ const ThreeScene: React.FC = () => {
                 },
                 // called when loading has errors
                 function (error) {
-                    console.log('An error happened');
+                    console.log('An error happened', error);
 
                 })
 
@@ -111,7 +110,7 @@ const ThreeScene: React.FC = () => {
                 },
                 // called when loading has errors
                 function (error) {
-                    console.log('An error happened');
+                    console.log('An error happened', error);
 
                 })
 
