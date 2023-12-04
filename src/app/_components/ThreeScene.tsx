@@ -60,9 +60,11 @@ const ThreeScene: React.FC = () => {
             const cube = new THREE.Mesh(geometry, material);
             const loader = new GLTFLoader();
 
-            const group = new THREE.Group();
+            const logoGroup = new THREE.Group();
+            const standGroup = new THREE.Group();
             let light: THREE.Group<THREE.Object3DEventMap>;
             let logo: THREE.Group<THREE.Object3DEventMap>;
+            let stand: THREE.Group<THREE.Object3DEventMap>;
 
             loader.load(
                 // resource URL
@@ -71,9 +73,34 @@ const ThreeScene: React.FC = () => {
                 function (gltf) {
                     // setLogoRef(gltf)
                     logo = gltf.scene
-                    group.add(logo)
-                    logo.position.set(0, -1.1, 0)
-                    group.position.set(0,1,0)
+                    logoGroup.add(logo)
+                    logo.position.set(0, -1.05, 0)
+                    logoGroup.position.set(0, 1, 0)
+                    gltf.animations; // Array<THREE.AnimationClip>
+                    gltf.scene; // THREE.Group
+                    gltf.scenes; // Array<THREE.Group>
+                    gltf.cameras; // Array<THREE.Camera>
+                    gltf.asset
+                },
+                // called while loading is progressing
+                function (xhr) {
+                    console.log((xhr.loaded / xhr.total * 100) + '% loaded');
+                },
+                // called when loading has errors
+                function (error) {
+                    console.log('An error happened', error);
+
+                })
+
+            loader.load(
+                // resource URL
+                '/models/gltf/stand.gltf',
+                // called when the resource is loaded
+                function (gltf) {
+                    stand = gltf.scene
+                    standGroup.add(stand)
+                    stand.position.set(0, -0.6, 0)
+                    standGroup.position.set(0, 1, 0)
                     gltf.animations; // Array<THREE.AnimationClip>
                     gltf.scene; // THREE.Group
                     gltf.scenes; // Array<THREE.Group>
@@ -114,17 +141,21 @@ const ThreeScene: React.FC = () => {
 
                 })
 
-            scene.add(cube);
-            scene.add(group)
+            // scene.add(cube);
+            scene.add(logoGroup)
+            scene.add(standGroup)
 
             renderer.render(scene, camera);
             // Add this function inside the useEffect hook
             const renderScene = () => {
-                cube.rotation.x += 0.01;
-                cube.rotation.y += 0.01;
-                cube.position.x += 1;
+                // cube.rotation.x += 0.01;
+                // cube.rotation.y += 0.01;
+                // cube.position.x += 1;
+                if (!!stand) {
+                    standGroup.rotation.z -= 0.01;
+                }
                 if (!!logo) {
-                    group.rotation.z += 0.1;
+                    logoGroup.rotation.z += 0.05;
                 }
                 renderer.render(scene, camera);
                 requestAnimationFrame(renderScene);
