@@ -61,6 +61,7 @@ const ThreeScene: React.FC = () => {
             const cube = new THREE.Mesh(geometry, material);
             const loader = new GLTFLoader();
 
+            const group = new THREE.Group();
             let light: THREE.Group<THREE.Object3DEventMap>;
             let logo: THREE.Group<THREE.Object3DEventMap>;
 
@@ -71,7 +72,9 @@ const ThreeScene: React.FC = () => {
                 function (gltf) {
                     // setLogoRef(gltf)
                     logo = gltf.scene
-                    scene.add(logo)
+                    group.add(logo)
+                    logo.position.set(0, -1.1, 0)
+                    group.position.set(0,1,0)
                     gltf.animations; // Array<THREE.AnimationClip>
                     gltf.scene; // THREE.Group
                     gltf.scenes; // Array<THREE.Group>
@@ -113,6 +116,8 @@ const ThreeScene: React.FC = () => {
                 })
 
             scene.add(cube);
+            scene.add(group)
+
 
             renderer.render(scene, camera);
             // Add this function inside the useEffect hook
@@ -120,8 +125,9 @@ const ThreeScene: React.FC = () => {
                 cube.rotation.x += 0.01;
                 cube.rotation.y += 0.01;
                 cube.position.x += 1;
-                if (!!logo)
-                    logo.rotation.z += 0.01;
+                if (!!logo) {
+                    group.rotation.z += 0.1;
+                }
                 renderer.render(scene, camera);
                 requestAnimationFrame(renderScene);
             };
