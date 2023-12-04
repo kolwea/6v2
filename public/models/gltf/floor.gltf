@@ -1,0 +1,462 @@
+{
+  "asset": {
+    "version": "2.0",
+    "generator": "THREE.GLTFExporter"
+  },
+  "scenes": [
+    {
+      "nodes": [
+        0
+      ]
+    }
+  ],
+  "scene": 0,
+  "nodes": [
+    {
+      "children": [
+        6
+      ],
+      "matrix": [
+        0.01,
+        0,
+        0,
+        0,
+        0,
+        0.01,
+        0,
+        0,
+        0,
+        0,
+        0.01,
+        0,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "matrix": [
+        0.7922360196196323,
+        -0.41516513487676315,
+        -0.44721359549995865,
+        0,
+        0.4641687317361558,
+        0.8857467970466778,
+        0,
+        0,
+        0.39611800980981693,
+        -0.207582567438382,
+        0.8944271909999155,
+        0,
+        0,
+        0,
+        0,
+        1
+      ],
+      "name": "Directional Light",
+      "extensions": {
+        "KHR_lights_punctual": {
+          "light": 0
+        }
+      }
+    },
+    {
+      "matrix": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        2.2204460492503175e-16,
+        -1.000000000000002,
+        0,
+        0,
+        1.000000000000002,
+        2.2204460492503175e-16,
+        0,
+        0,
+        -149.9999999999997,
+        0,
+        1
+      ],
+      "name": "Floor",
+      "mesh": 0
+    },
+    {
+      "matrix": [
+        1,
+        1.2246467991473532e-16,
+        0,
+        0,
+        -6.625250861387267e-17,
+        0.5409927879613963,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        54,
+        74.99999999999972,
+        89,
+        1
+      ],
+      "name": "The floor",
+      "children": [
+        1,
+        2
+      ]
+    },
+    {
+      "matrix": [
+        -0.8208344506419012,
+        -0.458510393358289,
+        -0.34058629423662184,
+        0,
+        -0.5567657923817528,
+        0.7753761783853828,
+        0.2979993866201708,
+        0,
+        0.12744668325588793,
+        0.43423496079300905,
+        -0.8917383818991793,
+        0,
+        22.43168342889437,
+        343.0901109905068,
+        -202.01474300301894,
+        1
+      ],
+      "camera": 0
+    },
+    {
+      "matrix": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        1
+      ],
+      "name": "Default Ambient Light"
+    },
+    {
+      "name": "Scene",
+      "children": [
+        3,
+        4,
+        5
+      ]
+    }
+  ],
+  "extensions": {
+    "KHR_lights_punctual": {
+      "lights": [
+        {
+          "name": "Directional Light",
+          "color": [
+            1,
+            1,
+            1
+          ],
+          "intensity": 0.7,
+          "type": "directional"
+        }
+      ]
+    }
+  },
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteOffset": 0,
+      "byteLength": 48,
+      "target": 34962,
+      "byteStride": 12
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 48,
+      "byteLength": 48,
+      "target": 34962,
+      "byteStride": 12
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 96,
+      "byteLength": 32,
+      "target": 34962,
+      "byteStride": 8
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 128,
+      "byteLength": 24,
+      "target": 34963
+    }
+  ],
+  "buffers": [
+    {
+      "byteLength": 152,
+      "uri": "data:application/octet-stream;base64,AEAcxQBAHEUAAAAAAEAcRQBAHMUAAAAAAEAcRQBAHEUAAAAAAEAcxQBAHMUAAAAAAAAAAAAAAAAAAIA/AAAAAAAAAAAAAIA/AAAAAAAAAAAAAIA/AAAAAAAAAAAAAIA/AAAAAAAAgD8AAIA/AAAAAAAAgD8AAIA/AAAAAAAAAAAAAAAAAQAAAAIAAAABAAAAAAAAAAMAAAA="
+    }
+  ],
+  "accessors": [
+    {
+      "bufferView": 0,
+      "componentType": 5126,
+      "count": 4,
+      "max": [
+        2500,
+        2500,
+        0
+      ],
+      "min": [
+        -2500,
+        -2500,
+        0
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 1,
+      "componentType": 5126,
+      "count": 4,
+      "max": [
+        0,
+        0,
+        1
+      ],
+      "min": [
+        0,
+        0,
+        1
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 2,
+      "componentType": 5126,
+      "count": 4,
+      "max": [
+        1,
+        1
+      ],
+      "min": [
+        0,
+        0
+      ],
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 3,
+      "componentType": 5125,
+      "count": 6,
+      "max": [
+        3
+      ],
+      "min": [
+        0
+      ],
+      "type": "SCALAR"
+    }
+  ],
+  "meshes": [
+    {
+      "primitives": [
+        {
+          "mode": 4,
+          "attributes": {
+            "POSITION": 0,
+            "NORMAL": 1,
+            "TEXCOORD_0": 2
+          },
+          "extras": {
+            "shape": {
+              "points": [
+                -2500,
+                2500,
+                -2500,
+                2500,
+                -2500,
+                2500,
+                0,
+                2500,
+                2500,
+                2500,
+                2500,
+                2500,
+                2500,
+                0,
+                2500,
+                -2500,
+                2500,
+                -2500,
+                2500,
+                -2500,
+                0,
+                -2500,
+                -2500,
+                -2500,
+                -2500,
+                -2500,
+                -2500,
+                0
+              ],
+              "shapeHoles": [],
+              "isClosed": true,
+              "roundness": 0
+            },
+            "parameters": {
+              "width": 5000,
+              "depth": 0,
+              "cornerRadius": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "cornerType": 0,
+              "extrudeBevelSize": 0,
+              "extrudeBevelSegments": 1,
+              "height": 5000,
+              "type": "RectangleGeometry",
+              "subdivisions": 12,
+              "shape": {
+                "isClosed": true,
+                "points": [
+                  {
+                    "id": "01860718-bbb0-4938-b051-bef8f1697538",
+                    "fi": 0,
+                    "data": {
+                      "position": [
+                        -2500,
+                        2500
+                      ],
+                      "controlNext": {
+                        "position": [
+                          -2500,
+                          2500
+                        ]
+                      },
+                      "controlPrevious": {
+                        "position": [
+                          -2500,
+                          2500
+                        ]
+                      },
+                      "areControlsDirectionsMirrored": true,
+                      "roundness": 0
+                    }
+                  },
+                  {
+                    "id": "9eba5627-ab2f-4da7-b551-4d7ab1114305",
+                    "fi": 1,
+                    "data": {
+                      "position": [
+                        2500,
+                        2500
+                      ],
+                      "controlNext": {
+                        "position": [
+                          2500,
+                          2500
+                        ]
+                      },
+                      "controlPrevious": {
+                        "position": [
+                          2500,
+                          2500
+                        ]
+                      },
+                      "areControlsDirectionsMirrored": true,
+                      "roundness": 0
+                    }
+                  },
+                  {
+                    "id": "b2efae15-4790-405e-8dc9-ffec4de18815",
+                    "fi": 2,
+                    "data": {
+                      "position": [
+                        2500,
+                        -2500
+                      ],
+                      "controlNext": {
+                        "position": [
+                          2500,
+                          -2500
+                        ]
+                      },
+                      "controlPrevious": {
+                        "position": [
+                          2500,
+                          -2500
+                        ]
+                      },
+                      "areControlsDirectionsMirrored": true,
+                      "roundness": 0
+                    }
+                  },
+                  {
+                    "id": "d079f98a-dfde-456e-922c-fded6a2d4436",
+                    "fi": 3,
+                    "data": {
+                      "position": [
+                        -2500,
+                        -2500
+                      ],
+                      "controlNext": {
+                        "position": [
+                          -2500,
+                          -2500
+                        ]
+                      },
+                      "controlPrevious": {
+                        "position": [
+                          -2500,
+                          -2500
+                        ]
+                      },
+                      "areControlsDirectionsMirrored": true,
+                      "roundness": 0
+                    }
+                  }
+                ],
+                "roundness": 0,
+                "shapeHoles": []
+              }
+            },
+            "ui": {
+              "enabledIndieCorners": false
+            },
+            "type": "RectangleGeometry"
+          },
+          "indices": 3
+        }
+      ]
+    }
+  ],
+  "cameras": [
+    {
+      "type": "perspective",
+      "perspective": {
+        "aspectRatio": 1.6,
+        "yfov": 0.7853981633974483,
+        "zfar": 100000,
+        "znear": 5
+      }
+    }
+  ],
+  "extensionsUsed": [
+    "KHR_lights_punctual"
+  ]
+}

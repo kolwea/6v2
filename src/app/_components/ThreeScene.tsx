@@ -64,6 +64,7 @@ const ThreeScene: React.FC = () => {
             const standGroup = new THREE.Group();
             let light: THREE.Group<THREE.Object3DEventMap>;
             let logo: THREE.Group<THREE.Object3DEventMap>;
+            let floor: THREE.Group<THREE.Object3DEventMap>;
             let stand: THREE.Group<THREE.Object3DEventMap>;
 
             loader.load(
@@ -140,6 +141,29 @@ const ThreeScene: React.FC = () => {
                     console.log('An error happened', error);
 
                 })
+            loader.load(
+                // resource URL
+                '/models/gltf/floor.gltf',
+                // called when the resource is loaded
+                function (gltf) {
+                    // setLogoRef(gltf)
+                    floor = gltf.scene
+                    scene.add(floor)
+                    gltf.animations; // Array<THREE.AnimationClip>
+                    gltf.scene; // THREE.Group
+                    gltf.scenes; // Array<THREE.Group>
+                    gltf.cameras; // Array<THREE.Camera>
+                    gltf.asset
+                },
+                // called while loading is progressing
+                function (xhr) {
+                    console.log((xhr.loaded / xhr.total * 100) + '% loaded');
+                },
+                // called when loading has errors
+                function (error) {
+                    console.log('An error happened', error);
+
+                })
 
             // scene.add(cube);
             scene.add(logoGroup)
@@ -148,15 +172,8 @@ const ThreeScene: React.FC = () => {
             renderer.render(scene, camera);
             // Add this function inside the useEffect hook
             const renderScene = () => {
-                // cube.rotation.x += 0.01;
-                // cube.rotation.y += 0.01;
-                // cube.position.x += 1;
-                if (!!stand) {
-                    standGroup.rotation.z -= 0.01;
-                }
-                if (!!logo) {
-                    logoGroup.rotation.z += 0.05;
-                }
+                // standGroup.rotation.z -= 0.01;
+                logoGroup.rotation.z += 0.05;
                 renderer.render(scene, camera);
                 requestAnimationFrame(renderScene);
             };
