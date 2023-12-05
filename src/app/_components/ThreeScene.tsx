@@ -31,33 +31,20 @@ const setupInitalSceneControls = (containerRef: React.RefObject<HTMLDivElement>)
     return { scene, camera, renderer, onWindowResize }
 }
 
-// const loadSixLight = () => {
-//     const loader = new GLTFLoader();
-//     let model: THREE.Group<THREE.Object3DEventMap> | undefined
-//     loader.loadAsync(
-//         // resource URL
-//         '/models/gltf/light.gltf',
-//         // called when the resource is loaded
-//         function (progress) {
-//             // setLogoRef(gltf)
-//             console.log(progress)
-//         }).then((gltf) => {
-//             model = gltf.scene
-//         }).catch((err) => console.log(err))
-
-//     return model;
-// }
-
-const ThreeScene: React.FC = () => {
+const ThreeScene = ({
+    children
+}: {
+    children: React.ReactNode;
+}) => {
     const containerRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
         if (typeof window !== 'undefined') {
             const { scene, camera, renderer, onWindowResize } = setupInitalSceneControls(containerRef)
 
-            const geometry = new THREE.BoxGeometry();
-            const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
-            const cube = new THREE.Mesh(geometry, material);
+            // const geometry = new THREE.BoxGeometry();
+            // const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
+            // const cube = new THREE.Mesh(geometry, material);
             const loader = new GLTFLoader();
 
             const logoGroup = new THREE.Group();
@@ -67,6 +54,7 @@ const ThreeScene: React.FC = () => {
             let floor: THREE.Group<THREE.Object3DEventMap>;
             let stand: THREE.Group<THREE.Object3DEventMap>;
 
+            // load logo
             loader.load(
                 // resource URL
                 '/models/gltf/6ixLogoF.gltf',
@@ -92,7 +80,7 @@ const ThreeScene: React.FC = () => {
                     console.log('An error happened', error);
 
                 })
-
+            // load stand
             loader.load(
                 // resource URL
                 '/models/gltf/stand.gltf',
@@ -117,10 +105,10 @@ const ThreeScene: React.FC = () => {
                     console.log('An error happened', error);
 
                 })
-
+            // load light
             loader.load(
                 // resource URL
-                '/models/gltf/light.gltf',
+                '/models/gltf/whiteLight.gltf',
                 // called when the resource is loaded
                 function (gltf) {
                     // setLogoRef(gltf)
@@ -141,6 +129,7 @@ const ThreeScene: React.FC = () => {
                     console.log('An error happened', error);
 
                 })
+            // load floor
             loader.load(
                 // resource URL
                 '/models/gltf/floor.gltf',
@@ -168,9 +157,8 @@ const ThreeScene: React.FC = () => {
             // scene.add(cube);
             scene.add(logoGroup)
             scene.add(standGroup)
-
             renderer.render(scene, camera);
-            // Add this function inside the useEffect hook
+
             const renderScene = () => {
                 // standGroup.rotation.z -= 0.01;
                 logoGroup.rotation.z += 0.05;
@@ -184,7 +172,9 @@ const ThreeScene: React.FC = () => {
         }
     }, []);
 
-    return <div ref={containerRef} style={{ width: "100vw", height: "100vh" }} />;
+    return <div ref={containerRef} style={{ width: "100vw", height: "100vh" }} > 
+    {children}
+    </div>;
 };
 
 export default ThreeScene;
