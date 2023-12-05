@@ -2,6 +2,8 @@ import "~/styles/globals.css";
 
 import { Inter } from "next/font/google";
 import { cookies } from "next/headers";
+import localFont from 'next/font/local'
+
 
 import { TRPCReactProvider } from "~/trpc/react";
 
@@ -9,6 +11,52 @@ const inter = Inter({
   subsets: ["latin"],
   variable: "--font-sans",
 });
+
+export const founders = localFont({
+  src: [
+    {
+      path: 'fonts/Founders_Grotesk/FoundersGrotesk-Regular.otf',
+      weight: '400',
+      style: 'normal',
+    },
+    {
+      path: 'fonts/Founders_Grotesk/FoundersGrotesk-RegularItalic.otf',
+      weight: '400',
+      style: 'italic',
+    },
+    // {
+    //   path: '/fonts/Founders_Grotesk/FoundersGrotesk-Regular.otf',
+    //   weight: '400',
+    //   style: 'normal',
+    // },
+    // {
+    //   path: '/fonts/Founders_Grotesk/FoundersGrotesk-Regular.otf',
+    //   weight: '400',
+    //   style: 'normal',
+    // },
+    // {
+    //   path: '/fonts/Founders_Grotesk/FoundersGrotesk-Regular.otf',
+    //   weight: '400',
+    //   style: 'normal',
+    // },
+    // {
+    //   path: './Roboto-Italic.woff2',
+    //   weight: '400',
+    //   style: 'italic',
+    // },
+    // {
+    //   path: './Roboto-Bold.woff2',
+    //   weight: '700',
+    //   style: 'normal',
+    // },
+    // {
+    //   path: './Roboto-BoldItalic.woff2',
+    //   weight: '700',
+    //   style: 'italic',
+    // },
+  ],
+})
+
 
 export const metadata = {
   title: "Create T3 App",
@@ -23,7 +71,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`font-sans ${inter.variable}`}>
+      <body className={`font-sans ${founders.className}`}>
         <TRPCReactProvider cookies={cookies().toString()}>
           {children}
         </TRPCReactProvider>
