@@ -55,6 +55,7 @@ export const founders = localFont({
     //   style: 'italic',
     // },
   ],
+  variable: "--font-founders"
 })
 
 
@@ -71,7 +72,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`font-sans ${founders.className}`}>
+      <body>
         <TRPCReactProvider cookies={cookies().toString()}>
           {children}
         </TRPCReactProvider>
