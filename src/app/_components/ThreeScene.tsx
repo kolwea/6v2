@@ -14,6 +14,7 @@ const setupInitalSceneControls = (containerRef: React.RefObject<HTMLDivElement>)
     const renderer = new THREE.WebGLRenderer();
     renderer.setSize(window.innerWidth, window.innerHeight);
     containerRef.current?.appendChild(renderer.domElement);
+    renderer.domElement.className = "canvas"
     // camera.position.z = 1;
 
     function onWindowResize() {
@@ -161,7 +162,7 @@ const ThreeScene = ({
 
             const renderScene = () => {
                 // standGroup.rotation.z -= 0.01;
-                logoGroup.rotation.z += 0.05;
+                logoGroup.rotation.z += 0.025;
                 renderer.render(scene, camera);
                 requestAnimationFrame(renderScene);
             };
@@ -172,8 +173,8 @@ const ThreeScene = ({
         }
     }, []);
 
-    return <div ref={containerRef} style={{ width: "100vw", height: "100vh" }} > 
-    {children}
+    return <div ref={containerRef} className='flex flex-col absolute top-0 overflow-y-scroll' style={{ width: "100vw", height: "100vh" }} >
+        {children}
     </div>;
 };
 
