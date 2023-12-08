@@ -1,6 +1,8 @@
-import NavigationMenu from "./_components/Navigation";
 import ThreeScene from "./_components/ThreeScene";
 import localFont from '@next/font/local'
+import SixHeroSection from "./_components/six/SixHeroSection";
+import SixHeader from "./_components/six/SixHeader";
+import SixExampleHeroSection from "./_components/six/SixExampleHeroSection";
 
 export const founders = localFont({
   src: [
@@ -52,7 +54,13 @@ export default async function Home() {
   return (
     <main className={`flex flex-col items-center justify-center ${founders.className} font-sans`}>
       <ThreeScene >
-        <NavigationMenu />
+        <div className='absolute' style={{ width: "100vw" }}>
+          <div className='opacity-50'>
+            <SixHeader />
+            {/* <SixHeroSection /> */}
+            <SixExampleHeroSection />
+          </div>
+        </div>
       </ThreeScene>
     </main>
   );

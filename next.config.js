@@ -6,7 +6,15 @@ await import("./src/env.js");
 
 /** @type {import("next").NextConfig} */
 const config = {
-    reactStrictMode : false
+    reactStrictMode: false,
+    images:
+    {
+        dangerouslyAllowSVG: true,
+        remotePatterns: [
+            { hostname: "tailwindui.com",
+         }
+        ]
+    }
 };
 
 export default config;

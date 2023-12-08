@@ -1,0 +1,124 @@
+{
+  "asset": {
+    "generator": "Khronos glTF Blender I/O v4.0.44",
+    "version": "2.0"
+  },
+  "scene": 0,
+  "scenes": [
+    {
+      "name": "Scene",
+      "nodes": [
+        0,
+        2
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "name": "Default Ambient Light",
+      "translation": [
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "mesh": 0,
+      "name": "6ix"
+    },
+    {
+      "children": [
+        1
+      ],
+      "name": "6ix.001",
+      "scale": [
+        0.10000000149011612,
+        0.10000000149011612,
+        0.10000000149011612
+      ]
+    }
+  ],
+  "meshes": [
+    {
+      "name": "Mesh_0",
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 0,
+            "NORMAL": 1,
+            "TEXCOORD_0": 2
+          },
+          "indices": 3
+        }
+      ]
+    }
+  ],
+  "accessors": [
+    {
+      "bufferView": 0,
+      "componentType": 5126,
+      "count": 23353,
+      "max": [
+        7.461131572723389,
+        0.3127894103527069,
+        6.706422328948975
+      ],
+      "min": [
+        -6.9102678298950195,
+        -0.3128099739551544,
+        -6.776175022125244
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 1,
+      "componentType": 5126,
+      "count": 23353,
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 2,
+      "componentType": 5126,
+      "count": 23353,
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 3,
+      "componentType": 5123,
+      "count": 66768,
+      "type": "SCALAR"
+    }
+  ],
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 280236,
+      "byteOffset": 0,
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteLength": 280236,
+      "byteOffset": 280236,
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteLength": 186824,
+      "byteOffset": 560472,
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteLength": 133536,
+      "byteOffset": 747296,
+      "target": 34963
+    }
+  ],
+  "buffers": [
+    {
+      "uri": "6ixLogo_data.bin",
+      "byteLength": 880832
+    }
+  ]
+}
