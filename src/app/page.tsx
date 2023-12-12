@@ -1,6 +1,7 @@
 import ThreeScene from "./_components/ThreeScene";
-import localFont from '@next/font/local'
+import localFont from "next/font/local"
 import SixExampleHeroSection from "./_components/six/SixExampleHeroSection";
+import JoinMailingListForm from "./_components/six/SixJoinMailingList";
 
 const founders = localFont({
   src: [
@@ -53,7 +54,7 @@ export default async function Home() {
     <main className={`flex flex-col items-center justify-center  ${founders.className} font-sans`}>
       <ThreeScene >
         <div className='absolute' >
-            <SixExampleHeroSection />
+          <SixExampleHeroSection />
         </div>
       </ThreeScene>
     </main>
