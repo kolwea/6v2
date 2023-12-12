@@ -17,9 +17,8 @@ const SixHeader = () => {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
     return <header className="absolute inset-x-0 top-0 z-50">
-
-        <nav className="flex items-center justify-between p-6 lg:px-8" aria-label="Global">
-            <div className="flex lg:flex-1">
+        <nav className="flex items-center justify-between p-6 lg:px-8 mx-auto aspect-video overflow-hidden rounded-xl object-cover sm:w-full lg:order-last lg:aspect-square" aria-label="Global">
+            <div className="flex lg:flex-1 ">
                 {/* <a href="#" className="-m-1.5 p-1.5">
                     <span className="sr-only">the6ixCollective</span>
                     <SixLogo scale={0.08} fill="#e6e6e6" />

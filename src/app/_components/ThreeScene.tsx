@@ -173,7 +173,7 @@ const ThreeScene = ({
         }
     }, []);
 
-    return <div ref={containerRef} className='flex flex-col absolute top-0 overflow-y-scroll' style={{ width: "100vw", height: "100vh" }} >
+    return <div ref={containerRef} className=' bg-[#f0fdfa] overflow-x-clip flex flex-col absolute top-0' style={{ width: "100vw", height: "100vh" }} >
         {children}
     </div>;
 };
