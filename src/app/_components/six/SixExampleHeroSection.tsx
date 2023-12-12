@@ -4,10 +4,11 @@
  */
 import Link from "next/link"
 import { type JSX, type SVGProps } from "react"
+import JoinMailingListForm from "./SixJoinMailingList"
 
 export default function SixExampleHeroSection() {
     return (
-        <div className="flex flex-col min-h-screen">
+        <div className="flex flex-col min-h-screen p-4">
             {/* <header className="px-4 lg:px-6 h-16 flex items-center">
         <Link className="flex items-center space-x-2" href="#">
           <ClapperboardIcon className="h-6 w-6" />
@@ -31,9 +32,9 @@ export default function SixExampleHeroSection() {
                         <div className="grid gap-4 lg:grid-cols-[1fr_400px] lg:gap-8 xl:grid-cols-[1fr_600px]">
                             <div className="flex flex-col justify-center space-y-4">
                                 <div className="space-y-2">
-                                    <h1 className="text-4xl font-bold text-teal-100 tracking-tighter sm:text-5xl xl:text-6xl">
-                                        Welcome to
-                                        <span className="bg-gradient-to-r from-teal-100 to-teal-200 text-teal-950 pt-[4px] mx-[4px] px-[4px] rounded-sm">
+                                    <h1 className="block text-4xl wrap font-bold text-teal-100 tracking-tighter sm:text-5xl xl:text-6xl">
+                                        <span>Welcome to</span>
+                                        <span className="bg-gradient-to-r ml-2 from-teal-100 to-teal-200 text-teal-950 pt-[4px] mx-[4px] px-[4px] rounded-sm">
                                             _the6ixCollective
                                         </span>
                                     </h1>
@@ -60,6 +61,8 @@ export default function SixExampleHeroSection() {
                         </div>
                     </div>
                 </section>
+                <JoinMailingListForm />
+
             </main>
             <footer className="flex justify-center items-center h-16 px-4 lg:px-6 border-teal-100">
                 <p className="text-sm text-gray-500 dark:text-gray-400">© the6ixCollective. All rights reserved.</p>
