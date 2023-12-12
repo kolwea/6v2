@@ -1,8 +1,8 @@
+/* eslint-disable @typescript-eslint/unbound-method */
 import "~/styles/globals.css";
 import { cookies } from "next/headers";
-
-
 import { TRPCReactProvider } from "~/trpc/react";
+import { Providers } from "./providers";
 
 export const metadata = {
   title: "the6ixCollective",
@@ -15,11 +15,14 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+
   return (
-    <html lang="en">
+    <html lang="en" className='dark'>
       <body>
         <TRPCReactProvider cookies={cookies().toString()}>
-          {children}
+          <Providers>
+            {children}
+          </Providers>
         </TRPCReactProvider>
       </body>
     </html>

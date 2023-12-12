@@ -1,7 +1,6 @@
 import ThreeScene from "./_components/ThreeScene";
 import localFont from "next/font/local"
 import SixExampleHeroSection from "./_components/six/SixExampleHeroSection";
-import JoinMailingListForm from "./_components/six/SixJoinMailingList";
 
 const founders = localFont({
   src: [
