@@ -61,8 +61,7 @@ export default function SixExampleHeroSection() {
                         </div>
                     </div>
                 </section>
-                <JoinMailingListForm />
-
+                {/* <JoinMailingListForm /> */}
             </main>
             <footer className="flex justify-center items-center h-16 px-4 lg:px-6 border-teal-100">
                 <p className="text-sm text-gray-500 dark:text-gray-400">© the6ixCollective. All rights reserved.</p>
