@@ -16,5 +16,6 @@ export const emailRouter = createTRPCRouter({
       console.log(input);
       const response = await ctx.email.emails.send(input);
       console.log(response);
+      return response;
     }),
 });
