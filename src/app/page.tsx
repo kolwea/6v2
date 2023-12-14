@@ -1,6 +1,7 @@
 import ThreeScene from "./_components/ThreeScene";
 import localFont from "next/font/local"
 import SixExampleHeroSection from "./_components/six/SixExampleHeroSection";
+import { api } from "~/trpc/server";
 
 const founders = localFont({
   src: [
@@ -49,6 +50,11 @@ const founders = localFont({
 })
 
 export default async function Home() {
+  //! Test sending email via trpc api
+  // const testEmail = { to: "kswof97@yahoo.com", from: "test@6ixchicago.com", subject: "Testing emails from resend", html: "<h1>Empty body</h1>" }
+  // const sendEmail = api.email.sendEmail.mutate(testEmail)
+  // console.log(sendEmail)
+
   return (
     <main className={`flex flex-col items-center justify-center  ${founders.className} font-sans`}>
       <ThreeScene >
