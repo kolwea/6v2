@@ -14,15 +14,16 @@ export const emailRouter = createTRPCRouter({
     .mutation(async ({ ctx, input }) => {
       //Do something
       const response = await ctx.email.emails.send(input);
-      console.log(response);
       return response;
     }),
   joinMailingList: publicProcedure
     .input(z.object({ name: z.string(), email: z.string().email() }))
-    .query(async ({ ctx, input }) => {
-      const res = await ctx.db.mailingListUser.findFirst({
+    .mutation(async ({ ctx, input }) => {
+      const res = await ctx.db.mailingListUser.upsert({
         where: { email: input.email },
+        update: {},
+        create: { name: input.name, email: input.email },
       });
-      return res
+      return res;
     }),
 });

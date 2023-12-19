@@ -1,32 +1,21 @@
 "use client";
 
 import { Input, ModalHeader, ModalBody, ModalFooter, Button, ModalContent } from "@nextui-org/react";
+import { MailingListUser } from "@prisma/client";
 import { type FormEvent, useState } from "react";
 import { api } from "~/trpc/react";
 
 
-export const SignupModal = () => {
 
+export const SignupModal = () => {
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
+    const useJoinMailinglist = api.email.joinMailingList.useMutation()
     const testEmail = { to: "kswof97@yahoo.com", from: "test@6ixchicago.com", subject: "Testing emails on click", html: "<h1>Empty body</h1>" }
 
-
-    const useHandleSubmit = (event: FormEvent<HTMLFormElement>) => {
-        event.preventDefault();  
-        try {
-            const { data, isLoading } = api.email.joinMailingList.useQuery({ name, email })
-            console.log(data)
-            console.log(name, email)
-            // const response = api.email.sendEmail.useMutation({})
-            // if (response.isSuccess) {
-            //     console.log("Successfully added to mailing list.")
-            // } else {
-            //     console.log("Error while signing user up.")
-            // }
-        } catch (error) {
-            console.error('Error subscribing:', error);
-        }
+    const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+        event.preventDefault();
+        const res = useJoinMailinglist.mutate({ name, email }) 
     }
 
 
@@ -34,7 +23,7 @@ export const SignupModal = () => {
         <ModalContent>
             {(onClose) => (
                 <div>
-                    <form onSubmit={useHandleSubmit}>
+                    <form onSubmit={handleSubmit}>
                         <ModalHeader className="flex flex-col gap-1">Join our newsletter</ModalHeader>
                         <ModalBody>
                             <Input

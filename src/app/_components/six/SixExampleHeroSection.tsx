@@ -1,7 +1,7 @@
 'use client'
 import Link from "next/link"
-import { Modal, ModalContent, ModalHeader, ModalBody, Input, Checkbox, ModalFooter, Button, useDisclosure } from "@nextui-org/react"
-import { FormEvent, useState } from "react";
+import { Modal, Button, useDisclosure } from "@nextui-org/react"
+import { type SVGProps } from "react";
 import { SignupModal } from "../JoinMailingList";
 
 export default function SixHeroSection() {
