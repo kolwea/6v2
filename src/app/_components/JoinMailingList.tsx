@@ -14,7 +14,6 @@ export const SignupModal = () => {
     const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         useJoinMailinglist.mutate({ name, email })
-        // onClose()
     }
 
     return (
