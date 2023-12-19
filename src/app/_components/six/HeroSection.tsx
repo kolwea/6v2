@@ -34,7 +34,7 @@ export default function HeroSection() {
                                 <div className="space-y-2">
                                     <h1 className="block text-4xl wrap font-bold text-teal-100 tracking-tighter sm:text-5xl xl:text-6xl">
                                         <span>Welcome to</span>
-                                        <span className="bg-gradient-to-r ml-2 from-teal-100 to-teal-200 text-teal-950 pt-[4px] mx-[4px] px-[4px] rounded-sm">
+                                        <span className=" font-light bg-gradient-to-r ml-2 from-teal-100 to-teal-200 text-teal-950 pt-[8px] mx-[4px] px-[8px] rounded-sm">
                                             the6ixCollective
                                         </span>
                                     </h1>

@@ -3,8 +3,8 @@
 import { Input, ModalHeader, ModalBody, ModalFooter, Button, ModalContent } from "@nextui-org/react";
 import { type FormEvent, useState } from "react";
 import { api } from "~/trpc/react";
-
-
+import { MailIcon } from "./svgs/MailIcon";
+import { LockIcon } from "./svgs/LockIcon";
 
 export const SignupModal = () => {
     const [name, setName] = useState("");
@@ -14,8 +14,8 @@ export const SignupModal = () => {
     const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         useJoinMailinglist.mutate({ name, email })
+        // onClose()
     }
-
 
     return (
         <ModalContent>
@@ -26,9 +26,9 @@ export const SignupModal = () => {
                         <ModalBody>
                             <Input
                                 autoFocus
-                                // endContent={
-                                //     <LockIcon className="text-2xl text-default-400 pointer-events-none flex-shrink-0" />
-                                // }
+                                endContent={
+                                    <LockIcon className="text-2xl text-default-400 pointer-events-none flex-shrink-0" />
+                                }
                                 label="Name"
                                 autoComplete="given-name"
                                 type="text"
@@ -42,9 +42,9 @@ export const SignupModal = () => {
                                 }}
                             />
                             <Input
-                                // endContent={
-                                //     <MailIcon className="text-2xl text-default-400 pointer-events-none flex-shrink-0" />
-                                // }
+                                endContent={
+                                    <MailIcon className="text-2xl text-default-400 pointer-events-none flex-shrink-0" />
+                                }
                                 label="Email"
                                 autoComplete="email"
                                 type="email"
@@ -62,8 +62,8 @@ export const SignupModal = () => {
                             <Button color="danger" variant="flat" onPress={onClose}>
                                 Close
                             </Button>
-                            <Button color="primary" type="submit" onPress={onClose}>
-                                Sign in
+                            <Button color="primary" disabled={useJoinMailinglist.isLoading} type="submit">
+                                Sign up
                             </Button>
                         </ModalFooter>
                     </form>

@@ -88,7 +88,7 @@ const ThreeScene = ({
                 },
                 // called while loading is progressing
                 function (xhr) {
-                    console.log((xhr.loaded / xhr.total * 100) + '% loaded');
+                    // console.log((xhr.loaded / xhr.total * 100) + '% loaded');
                 },
                 // called when loading has errors
                 function (error) {
@@ -114,7 +114,7 @@ const ThreeScene = ({
                 },
                 // called while loading is progressing
                 function (xhr) {
-                    console.log((xhr.loaded / xhr.total * 100) + '% loaded');
+                    // console.log((xhr.loaded / xhr.total * 100) + '% loaded');
                 },
                 // called when loading has errors
                 function (error) {
@@ -141,7 +141,7 @@ const ThreeScene = ({
                 },
                 // called while loading is progressing
                 function (xhr) {
-                    console.log((xhr.loaded / xhr.total * 100) + '% loaded');
+                    // console.log((xhr.loaded / xhr.total * 100) + '% loaded');
                 },
                 // called when loading has errors
                 function (error) {
@@ -165,7 +165,7 @@ const ThreeScene = ({
                 },
                 // called while loading is progressing
                 function (xhr) {
-                    console.log((xhr.loaded / xhr.total * 100) + '% loaded');
+                    // console.log((xhr.loaded / xhr.total * 100) + '% loaded');
                 },
                 // called when loading has errors
                 function (error) {
@@ -181,15 +181,13 @@ const ThreeScene = ({
             const renderScene = () => {
                 // standGroup.rotation.z -= 0.01;
                 logoGroup.rotation.z += 0.0150;
-
-
                 renderer.render(scene, camera);
                 requestAnimationFrame(renderScene);
             };
 
             // Call the renderScene function to start the animation loop
             renderScene();
-            onWindowResize();
+            // onWindowResize();
         }
     }, []);
 
