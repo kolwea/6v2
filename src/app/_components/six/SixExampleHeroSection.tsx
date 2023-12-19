@@ -1,31 +1,31 @@
-/**
- * v0 by Vercel.
- * @see https://v0.dev/t/rzoySXtw6Ao
- */
+'use client'
 import Link from "next/link"
-import { type JSX, type SVGProps } from "react"
-import JoinMailingListForm from "./SixJoinMailingList"
+import { Modal, ModalContent, ModalHeader, ModalBody, Input, Checkbox, ModalFooter, Button, useDisclosure } from "@nextui-org/react"
+import { FormEvent, useState } from "react";
+import { SignupModal } from "../JoinMailingList";
 
-export default function SixExampleHeroSection() {
+export default function SixHeroSection() {
+    const { isOpen, onOpen, onOpenChange } = useDisclosure();
+
     return (
         <div className="flex flex-col min-h-screen p-4">
-            {/* <header className="px-4 lg:px-6 h-16 flex items-center">
-        <Link className="flex items-center space-x-2" href="#">
-          <ClapperboardIcon className="h-6 w-6" />
-          <span className="text-2xl font-bold">the6ixCollective</span>
-        </Link>
-        <nav className="ml-auto flex gap-4 sm:gap-6">
-          <Link clamssName="text-sm font-medium hover:underline underline-offset-4" href="#">
-            Projects
-          </Link>
-          <Link className="text-sm font-medium hover:underline underline-offset-4" href="#">
-            About Us
-          </Link>
-          <Link className="text-sm font-medium hover:underline underline-offset-4" href="#">
-            Contact
-          </Link>
-        </nav>
-      </header> */}
+            <header className="px-4 lg:px-6 h-16 flex items-center">
+                <Link className="flex items-center space-x-2" href="#">
+                    <ClapperboardIcon className="h-6 w-6" />
+                    <span className="text-2xl font-bold">the6ixCollective</span>
+                </Link>
+                <nav className="ml-auto flex gap-4 sm:gap-6">
+                    <Link className="text-sm font-medium hover:underline underline-offset-4" href="#">
+                        Projects
+                    </Link>
+                    <Link className="text-sm font-medium hover:underline underline-offset-4" href="#">
+                        About Us
+                    </Link>
+                    <Link className="text-sm font-medium hover:underline underline-offset-4" href="#">
+                        Contact
+                    </Link>
+                </nav>
+            </header>
             <main className="flex-1">
                 <section className="w-full py-6 sm:py-12 md:py-24 lg:py-32 xl:py-48">
                     <div className="container px-4 md:px-6">
@@ -44,12 +44,25 @@ export default function SixExampleHeroSection() {
                                     </p>
                                 </div>
                                 <div className="flex gap-4">
-                                    <Link
+                                    {/* <Link
                                         className="inline-flex h-10 items-center justify-center rounded-md bg-gray-900 px-8 text-sm font-medium text-white hover:bg-gray-700"
                                         href="#"
+                                        onClick={(e) => { e.preventDefault(); }}
                                     >
                                         Join Us
-                                    </Link>
+                                    </Link> */}
+                                    <Button
+                                        onPress={onOpen}
+                                        className="inline-flex h-10 items-center justify-center rounded-md bg-gray-900 px-8 text-sm font-medium text-white hover:bg-gray-700"
+                                        color="primary">Join Us
+                                    </Button>
+                                    <Modal
+                                        isOpen={isOpen}
+                                        onOpenChange={onOpenChange}
+                                        placement="top-center"
+                                    >
+                                        <SignupModal />
+                                    </Modal>
                                     <Link
                                         className="inline-flex h-10 items-center justify-center rounded-md border border-gray-200 bg-white px-8 text-sm font-medium text-gray-500 hover:bg-gray-100"
                                         href="#"

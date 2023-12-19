@@ -28,6 +28,8 @@ const setupInitalSceneControls = (containerRef: React.RefObject<HTMLDivElement>)
     }
 
     window.addEventListener('resize', onWindowResize);
+     
+    onWindowResize()
 
     return { scene, camera, renderer, onWindowResize }
 }
@@ -58,7 +60,7 @@ const ThreeScene = ({
             const { scene, camera, renderer, onWindowResize } = setupInitalSceneControls(containerRef)
 
             // const geometry = new THREE.BoxGeometry();
-            // const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
+            const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
             // const cube = new THREE.Mesh(geometry, material);
             const loader = new GLTFLoader();
 
@@ -199,11 +201,11 @@ const ThreeScene = ({
 
             // Call the renderScene function to start the animation loop
             renderScene();
-            onWindowResize();
+            // onWindowResize();
         }
     }, []);
 
-    return <div ref={containerRef} className=' bg-[#f0fdfa] overflow-x-clip flex flex-col absolute top-0' style={{ width: "100vw", height: "100vh" }} >
+    return <div ref={containerRef} className=' bg-fixed bg-[#f0fdfa]' style={{ width: "100vw", height: "100vh" }} >
         {children}
     </div>;
 };
