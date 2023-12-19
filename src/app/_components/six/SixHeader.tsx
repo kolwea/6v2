@@ -4,7 +4,7 @@ import { Bars3Icon, XMarkIcon } from "@heroicons/react/20/solid"
 import { useState } from "react"
 import { SixLogo } from "../svgs/SixLogo"
 import Link from "next/link"
-import { ClapperboardIcon } from "./SixExampleHeroSection"
+import { ClapperboardIcon } from "./HeroSection"
 
 const NAV_ITEMS = [
     { name: 'Mission', href: '#' },

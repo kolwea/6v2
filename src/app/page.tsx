@@ -1,6 +1,6 @@
 import ThreeScene from "./_components/ThreeScene";
 import localFont from "next/font/local"
-import SixHeroSection from "./_components/six/SixExampleHeroSection";
+import HeroSection from "./_components/six/HeroSection";
 import SixHeader from "./_components/six/SixHeader";
 
 const founders = localFont({
@@ -56,7 +56,7 @@ export default async function Home() {
       <ThreeScene >
         <div className='absolute' style={{ width: "100vw" }} >
           {/* <SixHeader /> */}
-          <SixHeroSection />
+          <HeroSection />
         </div>
       </ThreeScene>
     </main >
