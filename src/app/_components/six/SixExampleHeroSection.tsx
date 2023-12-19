@@ -44,13 +44,6 @@ export default function SixHeroSection() {
                                     </p>
                                 </div>
                                 <div className="flex gap-4">
-                                    {/* <Link
-                                        className="inline-flex h-10 items-center justify-center rounded-md bg-gray-900 px-8 text-sm font-medium text-white hover:bg-gray-700"
-                                        href="#"
-                                        onClick={(e) => { e.preventDefault(); }}
-                                    >
-                                        Join Us
-                                    </Link> */}
                                     <Button
                                         onPress={onOpen}
                                         className="inline-flex h-10 items-center justify-center rounded-md bg-gray-900 px-8 text-sm font-medium text-white hover:bg-gray-700"
@@ -74,7 +67,6 @@ export default function SixHeroSection() {
                         </div>
                     </div>
                 </section>
-                {/* <JoinMailingListForm /> */}
             </main>
             <footer className="flex justify-center items-center h-16 px-4 lg:px-6 border-teal-100">
                 <p className="text-sm text-gray-500 dark:text-gray-400">© the6ixCollective. All rights reserved.</p>

@@ -1,7 +1,6 @@
 "use client";
 
 import { Input, ModalHeader, ModalBody, ModalFooter, Button, ModalContent } from "@nextui-org/react";
-import { MailingListUser } from "@prisma/client";
 import { type FormEvent, useState } from "react";
 import { api } from "~/trpc/react";
 
@@ -10,12 +9,11 @@ import { api } from "~/trpc/react";
 export const SignupModal = () => {
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
-    const useJoinMailinglist = api.email.joinMailingList.useMutation()
-    const testEmail = { to: "kswof97@yahoo.com", from: "test@6ixchicago.com", subject: "Testing emails on click", html: "<h1>Empty body</h1>" }
+    const useJoinMailinglist = api.email.joinMailingList.useMutation();
 
     const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        const res = useJoinMailinglist.mutate({ name, email }) 
+        useJoinMailinglist.mutate({ name, email })
     }
 
 
