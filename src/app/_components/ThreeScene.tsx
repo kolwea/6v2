@@ -33,20 +33,6 @@ const setupInitalSceneControls = (containerRef: React.RefObject<HTMLDivElement>)
     return { scene, camera, renderer, onWindowResize }
 }
 
-// const loadModel = async (loader: GLTFLoader) => {
-
-//     const logo = await loader
-//         .loadAsync('/models/gltf/6ixLogo.glb', (e) => { console.log("Loading light", e) })
-//     const stand = await loader
-//         .loadAsync('/models/gltf/stand.gltf', (e) => { console.log(e) })
-//     const light = await loader
-//         .loadAsync('/models/gltf/whiteLight.gltf', (e) => { console.log(e) })
-//     const floor = await loader
-//         .loadAsync('/models/gltf/floor.gltf', (e) => { console.log(e) })
-
-//     return { logo, stand, light, floor }
-// }
-
 const ThreeScene = ({
     children
 }: {
@@ -56,7 +42,7 @@ const ThreeScene = ({
 
     useEffect(() => {
         if (typeof window !== 'undefined') {
-            const { scene, camera, renderer, onWindowResize } = setupInitalSceneControls(containerRef)
+            const { scene, camera, renderer } = setupInitalSceneControls(containerRef)
             const loader = new GLTFLoader();
 
             const logoGroup = new THREE.Group();
