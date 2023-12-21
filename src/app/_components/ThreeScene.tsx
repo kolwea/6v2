@@ -7,7 +7,7 @@ import { GLTFLoader } from 'three/examples/jsm/Addons.js';
 const setupInitalSceneControls = (containerRef: React.RefObject<HTMLDivElement>) => {
     const scene = new THREE.Scene();
     const camera = new THREE.OrthographicCamera(window.innerWidth / - 2, window.innerWidth / 2, window.innerHeight / 2, window.innerHeight / - 2, -20000, 20000);
-    
+
     camera.quaternion.setFromEuler(new THREE.Euler(-1.57, 0, 0));
 
     const renderer = new THREE.WebGLRenderer();
@@ -27,7 +27,7 @@ const setupInitalSceneControls = (containerRef: React.RefObject<HTMLDivElement>)
     }
 
     window.addEventListener('resize', onWindowResize);
-     
+
     onWindowResize()
 
     return { scene, camera, renderer, onWindowResize }
@@ -64,7 +64,7 @@ const ThreeScene = ({
                     logo = gltf.scene
                     logoGroup.add(logo)
                     // logo.position.set(0, -1.05, 0)
-                    logo.scale.set(5, 5, 5 )
+                    logo.scale.set(5, 5, 5)
                     logoGroup.position.set(4, 10, 0)
                     // gltf.animations; // Array<THREE.AnimationClip>
                     // gltf.scene; // THREE.Group
@@ -90,7 +90,7 @@ const ThreeScene = ({
                     stand = gltf.scene
                     standGroup.add(stand)
                     stand.position.set(0, -0.6, 0)
-                    stand.scale.set(3, 3, 3 )
+                    stand.scale.set(3, 3, 3)
                     standGroup.position.set(4, 10, 0)
                     // gltf.animations; // Array<THREE.AnimationClip>
                     // gltf.scene; // THREE.Group
@@ -117,7 +117,7 @@ const ThreeScene = ({
                     light = gltf.scene
                     lightGroup.add(light)
                     scene.add(lightGroup)
-                    light.scale.set(3, 3, 3 )
+                    light.scale.set(3, 3, 3)
                     lightGroup.position.set(4, 6, 0)
                     // gltf.animations; // Array<THREE.AnimationClip>
                     // gltf.scene; // THREE.Group
@@ -159,13 +159,11 @@ const ThreeScene = ({
 
                 })
 
-            // scene.add(cube);
             scene.add(logoGroup)
             scene.add(standGroup)
             renderer.render(scene, camera);
 
             const renderScene = () => {
-                // standGroup.rotation.z -= 0.01;
                 logoGroup.rotation.z += 0.0150;
                 renderer.render(scene, camera);
                 requestAnimationFrame(renderScene);
@@ -173,7 +171,6 @@ const ThreeScene = ({
 
             // Call the renderScene function to start the animation loop
             renderScene();
-            // onWindowResize();
         }
     }, []);
 
