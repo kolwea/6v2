@@ -18,7 +18,7 @@ export const SignupModal = () => {
 
     return (
         <ModalContent>
-            {(onClose) => (
+            {() => (
                 <div>
                     <form onSubmit={handleSubmit}>
                         <ModalHeader className="flex flex-col gap-1">Join our newsletter</ModalHeader>
@@ -58,10 +58,10 @@ export const SignupModal = () => {
                             />
                         </ModalBody>
                         <ModalFooter>
-                            <Button color="danger" variant="flat" onPress={onClose}>
+                            {/* <Button color="danger" variant="flat" onPress={onClose}>
                                 Close
-                            </Button>
-                            <Button color="primary" disabled={useJoinMailinglist.isLoading} type="submit">
+                            </Button> */}
+                            <Button className="w-full" color="primary" disabled={useJoinMailinglist.isLoading} type="submit">
                                 Sign up
                             </Button>
                         </ModalFooter>
