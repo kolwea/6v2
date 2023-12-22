@@ -25,6 +25,7 @@ export const SignupModal = () => {
         </PopoverContent>
     );
 
+    //TODO - Update Popover to trigger on mailing list states.
     return (
         <ModalContent>
             {() => (
@@ -66,7 +67,6 @@ export const SignupModal = () => {
                                 }}
                             />
                         </ModalBody>
-
                         <ModalFooter>
                             <Popover key={"success"} placement="bottom" color={"success"}>
                                 <PopoverTrigger>
@@ -76,7 +76,7 @@ export const SignupModal = () => {
                                 </PopoverTrigger>
                                 {content}
                             </Popover>
-                            {useJoinMailinglist.error && <p>Something went wrong! {useJoinMailinglist.error.message}</p>}
+                            {/* {useJoinMailinglist.error && <p>Something went wrong! {useJoinMailinglist.error.message}</p>} */}
                         </ModalFooter>
                     </form>
                 </div>
