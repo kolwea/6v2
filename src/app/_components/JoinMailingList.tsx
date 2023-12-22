@@ -13,9 +13,7 @@ import { content } from "tailwindcss/defaultTheme";
 export const SignupModal = ({ router }: { router: AppRouterInstance }) => {
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
-
     const useJoinMailinglist = api.email.joinMailingList.useMutation();
-    const patients = api.email.getMailingList.useQuery({ count: 100 });
 
     const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
@@ -82,10 +80,6 @@ export const SignupModal = ({ router }: { router: AppRouterInstance }) => {
                                 </PopoverTrigger>
                                 {content}
                             </Popover>
-                            {/* <Button color="danger" variant="flat" onPress={onClose}>
-                                Close
-                            </Button> */}
-
                         </ModalFooter>
                     </form>
                 </div>
