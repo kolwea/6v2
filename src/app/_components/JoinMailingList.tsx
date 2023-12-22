@@ -1,20 +1,35 @@
 "use client";
 
-import { Input, ModalHeader, ModalBody, ModalFooter, Button, ModalContent } from "@nextui-org/react";
+import { Input, ModalHeader, ModalBody, ModalFooter, Button, ModalContent, Popover, PopoverTrigger, PopoverContent } from "@nextui-org/react";
 import { type FormEvent, useState } from "react";
 import { api } from "~/trpc/react";
 import { MailIcon } from "./svgs/MailIcon";
 import { LockIcon } from "./svgs/LockIcon";
+import { NextRouter, Router, useRouter } from "next/router";
+import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime";
+import { color } from "framer-motion";
+import { content } from "tailwindcss/defaultTheme";
 
-export const SignupModal = () => {
+export const SignupModal = ({ router }: { router: AppRouterInstance }) => {
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
+
     const useJoinMailinglist = api.email.joinMailingList.useMutation();
+    const patients = api.email.getMailingList.useQuery({ count: 100 });
 
     const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         useJoinMailinglist.mutate({ name, email })
     }
+
+    const content = (
+        <PopoverContent>
+            <div className="px-1 py-2">
+                <div className="text-small font-bold">Success</div>
+                <div className="text-tiny">You've been added to the mailing list. Welcome to the 6ix.</div>
+            </div>
+        </PopoverContent>
+    );
 
     return (
         <ModalContent>
@@ -34,7 +49,7 @@ export const SignupModal = () => {
                                 id="name"
                                 key="name"
                                 name="name"
-                                placeholder="Enter your first name"
+                                placeholder="Enter your name"
                                 variant="bordered"
                                 onChange={(m) => {
                                     setName(m.target.value);
@@ -57,13 +72,20 @@ export const SignupModal = () => {
                                 }}
                             />
                         </ModalBody>
+
                         <ModalFooter>
+                            <Popover key={"success"} placement="top" color={"success"}>
+                                <PopoverTrigger>
+                                    <Button className="w-full" color="primary" disabled={useJoinMailinglist.isLoading} type="submit">
+                                        Sign up
+                                    </Button>
+                                </PopoverTrigger>
+                                {content}
+                            </Popover>
                             {/* <Button color="danger" variant="flat" onPress={onClose}>
                                 Close
                             </Button> */}
-                            <Button className="w-full" color="primary" disabled={useJoinMailinglist.isLoading} type="submit">
-                                Sign up
-                            </Button>
+
                         </ModalFooter>
                     </form>
                 </div>

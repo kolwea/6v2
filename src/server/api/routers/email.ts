@@ -26,4 +26,10 @@ export const emailRouter = createTRPCRouter({
       });
       return res;
     }),
+  getMailingList: publicProcedure
+    .input(z.object({ count: z.number() }))
+    .query(({ ctx, input }) => {
+      console.log(input);
+      return ctx.db.mailingListUser.findMany();
+    }),
 });

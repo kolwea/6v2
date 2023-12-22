@@ -3,9 +3,12 @@ import Link from "next/link"
 import { Modal, Button, useDisclosure } from "@nextui-org/react"
 import { type SVGProps } from "react";
 import { SignupModal } from "../JoinMailingList";
+import { useRouter } from "next/navigation";
 
 export default function HeroSection() {
     const { isOpen, onOpen, onOpenChange } = useDisclosure();
+    const router = useRouter()
+
 
     return (
         <div className="flex flex-col min-h-screen p-4">
@@ -54,7 +57,7 @@ export default function HeroSection() {
                                         onOpenChange={onOpenChange}
                                         placement="top-center"
                                     >
-                                        <SignupModal />
+                                        <SignupModal router={router} />
                                     </Modal>
                                     <Link
                                         className="inline-flex h-10 items-center justify-center rounded-md border border-gray-200 bg-white px-8 text-sm font-medium text-gray-500 hover:bg-gray-100"
