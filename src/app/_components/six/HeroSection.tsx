@@ -57,7 +57,7 @@ export default function HeroSection() {
                                         onOpenChange={onOpenChange}
                                         placement="top-center"
                                     >
-                                        <SignupModal router={router} />
+                                        <SignupModal />
                                     </Modal>
                                     <Link
                                         className="inline-flex h-10 items-center justify-center rounded-md border border-gray-200 bg-white px-8 text-sm font-medium text-gray-500 hover:bg-gray-100"

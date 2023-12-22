@@ -5,12 +5,8 @@ import { type FormEvent, useState } from "react";
 import { api } from "~/trpc/react";
 import { MailIcon } from "./svgs/MailIcon";
 import { LockIcon } from "./svgs/LockIcon";
-import { NextRouter, Router, useRouter } from "next/router";
-import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime";
-import { color } from "framer-motion";
-import { content } from "tailwindcss/defaultTheme";
 
-export const SignupModal = ({ router }: { router: AppRouterInstance }) => {
+export const SignupModal = () => {
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const useJoinMailinglist = api.email.joinMailingList.useMutation();
