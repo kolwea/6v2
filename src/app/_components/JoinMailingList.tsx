@@ -1,6 +1,6 @@
 "use client";
 
-import { Input, ModalHeader, ModalBody, ModalFooter, Button, ModalContent, Popover, PopoverTrigger, PopoverContent } from "@nextui-org/react";
+import { Input, ModalHeader, ModalBody, ModalFooter, Button, ModalContent, Popover, PopoverTrigger, PopoverContent, Spinner } from "@nextui-org/react";
 import { type FormEvent, useState } from "react";
 import { api } from "~/trpc/react";
 import { MailIcon } from "./svgs/MailIcon";
@@ -71,7 +71,7 @@ export const SignupModal = () => {
                             <Popover key={"success"} placement="bottom" color={"success"}>
                                 <PopoverTrigger>
                                     <Button className="w-full" color="primary" disabled={useJoinMailinglist.isLoading} type="submit">
-                                        Sign up
+                                        {useJoinMailinglist.isLoading ? <Spinner size="sm" /> : "Sign up"}
                                     </Button>
                                 </PopoverTrigger>
                                 {content}
