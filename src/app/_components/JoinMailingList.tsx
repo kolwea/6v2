@@ -68,7 +68,7 @@ export const SignupModal = () => {
                         </ModalBody>
 
                         <ModalFooter>
-                            <Popover key={"success"} placement="top" color={"success"}>
+                            <Popover key={"success"} placement="bottom" color={"success"}>
                                 <PopoverTrigger>
                                     <Button className="w-full" color="primary" disabled={useJoinMailinglist.isLoading} type="submit">
                                         Sign up
