@@ -3,8 +3,8 @@
 import { Input, ModalHeader, ModalBody, ModalFooter, Button, ModalContent, Popover, PopoverTrigger, PopoverContent, Spinner } from "@nextui-org/react";
 import { type FormEvent, useState } from "react";
 import { api } from "~/trpc/react";
-import { MailIcon } from "./svgs/MailIcon";
-import { LockIcon } from "./svgs/LockIcon";
+import { MailIcon } from "./svg/MailIcon";
+import { LockIcon } from "./svg/LockIcon";
 
 export const SignupModal = () => {
     const [name, setName] = useState("");
@@ -76,6 +76,7 @@ export const SignupModal = () => {
                                 </PopoverTrigger>
                                 {content}
                             </Popover>
+                            {useJoinMailinglist.error && <p>Something went wrong! {useJoinMailinglist.error.message}</p>}
                         </ModalFooter>
                     </form>
                 </div>

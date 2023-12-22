@@ -2,7 +2,7 @@
 import { Dialog } from "@headlessui/react"
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/20/solid"
 import { useState } from "react"
-import { SixLogo } from "../svgs/SixLogo"
+import { SixLogo } from "../svg/SixLogo"
 import Link from "next/link"
 import { ClapperboardIcon } from "./HeroSection"
 
