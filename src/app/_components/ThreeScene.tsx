@@ -57,14 +57,14 @@ const ThreeScene = ({
             // load logo
             loader.load(
                 // resource URL
-                '/models/gltf/6ixLogo.glb',
+                '/models/gltf/6ix_logo_updated.gltf',
                 // called when the resource is loaded
                 function (gltf) {
                     // setLogoRef(gltf)
                     logo = gltf.scene
                     logoGroup.add(logo)
-                    // logo.position.set(0, -1.05, 0)
-                    logo.scale.set(5, 5, 5)
+                    logo.position.set(0, -4, 0)
+                    logo.scale.set(4, 4, 4)
                     logoGroup.position.set(4, 10, 0)
                     // gltf.animations; // Array<THREE.AnimationClip>
                     // gltf.scene; // THREE.Group
@@ -160,7 +160,7 @@ const ThreeScene = ({
                 })
 
             scene.add(logoGroup)
-            scene.add(standGroup)
+            // scene.add(standGroup)
             renderer.render(scene, camera);
 
             const renderScene = () => {
