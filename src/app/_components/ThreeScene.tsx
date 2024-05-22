@@ -63,9 +63,9 @@ const ThreeScene = ({
                     // setLogoRef(gltf)
                     logo = gltf.scene
                     logoGroup.add(logo)
-                    logo.position.set(0, -4, 0)
-                    logo.scale.set(4, 4, 4)
-                    logoGroup.position.set(4, 10, 0)
+                    logo.position.set(0, -3, 0)
+                    logo.scale.set(3, 3, 3)
+                    logoGroup.position.set(0, 10, 0)
                     // gltf.animations; // Array<THREE.AnimationClip>
                     // gltf.scene; // THREE.Group
                     // gltf.scenes; // Array<THREE.Group>
@@ -174,9 +174,10 @@ const ThreeScene = ({
         }
     }, []);
 
-    return <div ref={containerRef} className=' bg-fixed bg-[#f0fdfa]' style={{ width: "100vw", height: "100vh" }} >
+    return (<section style={{ width: "100vw", height: "100vh" }} >
+        <div ref={containerRef} className=' bg-fixed bg-[#f0fdfa] absolute' />
         {children}
-    </div>;
+    </section>)
 };
 
 export default ThreeScene;

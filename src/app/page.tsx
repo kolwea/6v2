@@ -2,7 +2,10 @@ import ThreeScene from "./_components/ThreeScene";
 import localFont from "next/font/local"
 import HeroSection from "./_components/six/HeroSection";
 import SixHeader from "./_components/six/SixHeader";
-import { NavBar } from "./_components/NavagationBar";
+// import { NavBar } from "./_components/NavagationBar";
+import { Navbar, NavbarBrand, NavbarContent, NavbarItem, Button } from "@nextui-org/react";
+import Link from "next/link";
+import { SixLogo } from "./_components/svg/SixLogo";
 
 const founders = localFont({
   src: [
@@ -54,19 +57,46 @@ export default async function Home() {
 
   return (
     <main className={`flex flex-col items-center justify-center  ${founders.className} font-sans`}>
-      <NavBar></NavBar>
-      <section>
         <ThreeScene >
-          <div className='absolute' style={{ width: "100vw" }} >
+          <span className="max-w-max">
+            <Navbar>
+              <NavbarBrand>
+                <SixLogo scale={0.4} />
+                <p className="font-bold text-inherit">6ix Degree Collective</p>
+              </NavbarBrand>
+              <NavbarContent className="hidden sm:flex gap-4" justify="center">
+                <NavbarItem>
+                  <Link color="foreground" href="#">
+                    Features
+                  </Link>
+                </NavbarItem>
+                <NavbarItem isActive>
+                  <Link href="#" aria-current="page">
+                    Customers
+                  </Link>
+                </NavbarItem>
+                <NavbarItem>
+                  <Link color="foreground" href="#">
+                    Integrations
+                  </Link>
+                </NavbarItem>
+              </NavbarContent>
+              <NavbarContent justify="end">
+                <NavbarItem className="hidden lg:flex">
+                  <Link href="#">Login</Link>
+                </NavbarItem>
+                <NavbarItem>
+                  <Button as={Link} color="primary" href="#" variant="flat">
+                    Sign Up
+                  </Button>
+                </NavbarItem>
+              </NavbarContent>
+            </Navbar>
+            <div className="grid min-h-[70vh] grid-cols-1 md:grid-cols-2 items-center"></div>
             {/* <SixHeader /> */}
             {/* <HeroSection /> */}
-          </div>
+          </span>
         </ThreeScene>
-      </section>
-      <section>
-        
-      </section>
-
     </main >
   );
 }
