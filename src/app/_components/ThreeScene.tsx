@@ -57,15 +57,15 @@ const ThreeScene = ({
             // load logo
             loader.load(
                 // resource URL
-                '/models/gltf/6ix_logo_updated.gltf',
+                '/models/gltf/6ixLogoF.gltf',
                 // called when the resource is loaded
                 function (gltf) {
                     // setLogoRef(gltf)
                     logo = gltf.scene
                     logoGroup.add(logo)
-                    logo.position.set(0, -3, 0)
-                    logo.scale.set(3, 3, 3)
-                    logoGroup.position.set(0, 10, 0)
+                    logo.position.set(0, -2, 0)
+                    logo.scale.set(2, 2, 2)
+                    logoGroup.position.set(0, 3, 0)
                     // gltf.animations; // Array<THREE.AnimationClip>
                     // gltf.scene; // THREE.Group
                     // gltf.scenes; // Array<THREE.Group>
@@ -174,10 +174,10 @@ const ThreeScene = ({
         }
     }, []);
 
-    return (<section style={{ width: "100vw", height: "100vh" }} >
+    return (<div style={{ width: "100vw", height: "100vh" }} >
         <div ref={containerRef} className=' bg-fixed bg-[#f0fdfa] absolute' />
         {children}
-    </section>)
+    </div>)
 };
 
 export default ThreeScene;

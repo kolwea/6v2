@@ -56,10 +56,10 @@ const founders = localFont({
 export default async function Home() {
 
   return (
-    <main className={`flex flex-col items-center justify-center  ${founders.className} font-sans`}>
+    <main className={`flex flex-col items-center justify-center  ${founders.className} font-sans`} style={{ width: "100vw", height: "100vh" }}>
         <ThreeScene >
           <span className="max-w-max">
-            <Navbar>
+            <Navbar shouldHideOnScroll>
               <NavbarBrand>
                 <SixLogo scale={0.4} />
                 <p className="font-bold text-inherit">6ix Degree Collective</p>
