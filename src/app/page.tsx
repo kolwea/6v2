@@ -3,7 +3,7 @@ import localFont from "next/font/local"
 import HeroSection from "./_components/six/HeroSection";
 import SixHeader from "./_components/six/SixHeader";
 // import { NavBar } from "./_components/NavagationBar";
-import { Navbar, NavbarBrand, NavbarContent, NavbarItem, Button } from "@nextui-org/react";
+import { Navbar, NavbarBrand, NavbarContent, NavbarItem, Image } from "@nextui-org/react";
 import Link from "next/link";
 import { SixLogo } from "./_components/svg/SixLogo";
 
@@ -53,50 +53,53 @@ const founders = localFont({
   variable: "--font-founders"
 })
 
+const SixNavbar = () => <Navbar shouldHideOnScroll maxWidth={"full"}>
+  <NavbarBrand className="space-x-4 justify-start">
+    <SixLogo scale={0.05} />
+    <p className="font-bold text-inherit mt-1 text-xl">the6ixCollective</p>
+  </NavbarBrand>
+  <NavbarContent className="hidden sm:flex gap-4" justify="center">
+    <NavbarItem>
+      <Link color="foreground" href="#">
+        About
+      </Link>
+    </NavbarItem>
+    <NavbarItem isActive>
+      <Link href="#" aria-current="page">
+        News
+      </Link>
+    </NavbarItem>
+    <NavbarItem>
+      <Link color="foreground" href="#">
+        Events
+      </Link>
+    </NavbarItem>
+    <NavbarItem>
+      <Link color="foreground" href="#">
+        Contact
+      </Link>
+    </NavbarItem>
+  </NavbarContent>
+</Navbar>
+
 export default async function Home() {
 
   return (
-    <main className={`flex flex-col items-center justify-center  ${founders.className} font-sans`} style={{ width: "100vw", height: "100vh" }}>
-        <ThreeScene >
-          <span className="max-w-max">
-            <Navbar shouldHideOnScroll>
-              <NavbarBrand>
-                <SixLogo scale={0.4} />
-                <p className="font-bold text-inherit">6ix Degree Collective</p>
-              </NavbarBrand>
-              <NavbarContent className="hidden sm:flex gap-4" justify="center">
-                <NavbarItem>
-                  <Link color="foreground" href="#">
-                    Features
-                  </Link>
-                </NavbarItem>
-                <NavbarItem isActive>
-                  <Link href="#" aria-current="page">
-                    Customers
-                  </Link>
-                </NavbarItem>
-                <NavbarItem>
-                  <Link color="foreground" href="#">
-                    Integrations
-                  </Link>
-                </NavbarItem>
-              </NavbarContent>
-              <NavbarContent justify="end">
-                <NavbarItem className="hidden lg:flex">
-                  <Link href="#">Login</Link>
-                </NavbarItem>
-                <NavbarItem>
-                  <Button as={Link} color="primary" href="#" variant="flat">
-                    Sign Up
-                  </Button>
-                </NavbarItem>
-              </NavbarContent>
-            </Navbar>
-            <div className="grid min-h-[70vh] grid-cols-1 md:grid-cols-2 items-center"></div>
-            {/* <SixHeader /> */}
-            {/* <HeroSection /> */}
-          </span>
-        </ThreeScene>
+    <main className={`${founders.className} font-sans`} >
+      <div style={{ width: "100vw", height: "100vh" }}>
+        <SixNavbar />
+        <div className="content" style={{ width: "100vw", height: "100vh" }}>
+          <Image
+            width={300}
+            alt="NextUI hero Image"
+            src="https://github.com/kolwea/6v2/blob/development/public/IMG_6040.png"
+          />
+        </div>
+
+      </div>
+      {/* <div className="grid min-h-[70vh] grid-cols-1 md:grid-cols-2 items-center"></div> */}
+      {/* <SixHeader /> */}
+      {/* <HeroSection /> */}
     </main >
   );
 }
