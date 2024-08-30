@@ -12,6 +12,7 @@ import { ZodError } from "zod";
 
 import { db } from "~/server/db";
 import { email } from "~/server/email";
+import { mfa } from "~/server/mfa";
 
 /**
  * 1. CONTEXT
@@ -29,6 +30,7 @@ export const createTRPCContext = async (opts: { headers: Headers }) => {
   return {
     db,
     email,
+    mfa,
     ...opts,
   };
 };
