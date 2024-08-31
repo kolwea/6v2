@@ -11,7 +11,7 @@ export const mfaRouter = createTRPCRouter({
       }),
     )
     .mutation(async ({ ctx, input }) => {
-      const verification = await ctx.mfa.verify.v2
+      const verification = await ctx.twilioClient.verify.v2
         .services(env.TWILIO_SERVICE_ID)
         .verifications.create({
           channel: input.channel,
@@ -28,7 +28,7 @@ export const mfaRouter = createTRPCRouter({
       }),
     )
     .query(async ({ ctx, input }) => {
-      const check = await ctx.mfa.verify.v2
+      const check = await ctx.twilioClient.verify.v2
       .services(env.TWILIO_SERVICE_ID)
       .verificationChecks.create(input)
 

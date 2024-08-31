@@ -13,13 +13,13 @@ export const emailRouter = createTRPCRouter({
     )
     .mutation(async ({ ctx, input }) => {
       //Do something
-      const response = await ctx.email.emails.send(input);
+      const response = await ctx.resendClient.emails.send(input);
       return response;
     }),
   joinMailingList: publicProcedure
     .input(z.object({ name: z.string(), email: z.string().email() }))
     .mutation(async ({ ctx, input }) => {
-      const res = await ctx.db.mailingListUser.upsert({
+      const res = await ctx.prismaClient.mailingListUser.upsert({
         where: { email: input.email },
         update: {},
         create: { name: input.name, email: input.email },
@@ -30,6 +30,6 @@ export const emailRouter = createTRPCRouter({
     .input(z.object({ count: z.number() }))
     .query(({ ctx, input }) => {
       console.log(input);
-      return ctx.db.mailingListUser.findMany();
+      return ctx.prismaClient.mailingListUser.findMany();
     }),
 });
