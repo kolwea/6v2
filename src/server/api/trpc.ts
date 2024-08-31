@@ -10,9 +10,9 @@ import { initTRPC } from "@trpc/server";
 import superjson from "superjson";
 import { ZodError } from "zod";
 
-import { db } from "~/server/db";
-import { email } from "~/server/email";
-import { mfa } from "~/server/mfa";
+import { twilioClient } from "./services/Twilio";
+import { prismaClient } from "./services/Prisma";
+import { resendClient } from "./services/Resend";
 
 /**
  * 1. CONTEXT
@@ -28,9 +28,9 @@ import { mfa } from "~/server/mfa";
  */
 export const createTRPCContext = async (opts: { headers: Headers }) => {
   return {
-    db,
-    email,
-    mfa,
+    prismaClient,
+    resendClient,
+    twilioClient,
     ...opts,
   };
 };

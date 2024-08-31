@@ -8,4 +8,4 @@ const globalForTwilio = globalThis as unknown as {
     client: Twilio | undefined;
 };
 
-export const mfa = globalForTwilio.client ?? twilio(accountSid, authToken);
+export const twilioClient = globalForTwilio.client ?? twilio(accountSid, authToken);
