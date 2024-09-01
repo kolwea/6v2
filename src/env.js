@@ -22,6 +22,8 @@ export const env = createEnv({
     TWILIO_ACCOUNT_SID: z.string(),
     TWILIO_AUTH_TOKEN: z.string(),
     TWILIO_SERVICE_ID: z.string(),
+    SUPABASE_KEY : z.string(),
+    SUPABASE_API_URL : z.string(),
   },
 
   /**
@@ -44,6 +46,8 @@ export const env = createEnv({
     TWILIO_ACCOUNT_SID: process.env.TWILIO_ACCOUNT_SID,
     TWILIO_AUTH_TOKEN: process.env.TWILIO_AUTH_TOKEN,
     TWILIO_SERVICE_ID: process.env.TWILIO_SERVICE_ID,
+    SUPABASE_KEY : process.env.SUPABASE_KEY,
+    SUPABASE_API_URL: process.env.SUPABASE_API_URL,
     // NEXT_PUBLIC_CLIENTVAR: process.env.NEXT_PUBLIC_CLIENTVAR,
   },
   /**

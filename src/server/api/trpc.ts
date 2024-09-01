@@ -13,6 +13,7 @@ import { ZodError } from "zod";
 import { twilioClient } from "./services/Twilio";
 import { prismaClient } from "./services/Prisma";
 import { resendClient } from "./services/Resend";
+import { supabaseClient } from "./services/Supabase";
 
 /**
  * 1. CONTEXT
@@ -31,6 +32,7 @@ export const createTRPCContext = async (opts: { headers: Headers }) => {
     prismaClient,
     resendClient,
     twilioClient,
+    supabaseClient,
     ...opts,
   };
 };

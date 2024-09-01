@@ -29,10 +29,9 @@ const BasicInfoForm = ({ onSubmitSuccess }: { onSubmitSuccess: () => void }) => 
                     <Input
                         isRequired
                         type="type"
-                        label="Firstname"
+                        label="First Name"
                         name="firstName"
                         onChange={(e) => setFirstName(e?.currentTarget.value)}
-                        // defaultValue="Elon"
                         className="min-w-screen-xs max-w-screen-sm"
                     />
                 </div>
@@ -40,7 +39,7 @@ const BasicInfoForm = ({ onSubmitSuccess }: { onSubmitSuccess: () => void }) => 
                     <Input
                         isRequired
                         type="type"
-                        label="Lastname"
+                        label="Last Name"
                         name="lastName"
                         onChange={(e) => setLastName(e?.currentTarget.value)}
                         className="min-w-xs max-w-screen-sm"
