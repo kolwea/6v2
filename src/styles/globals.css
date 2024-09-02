@@ -3,11 +3,20 @@
 @tailwind utilities;
 
 html,
-body {
+body, header, div {
   margin: 0;
   padding: 0;
 }
 
+
+main {
+  background-color: antiquewhite;
+}
+
 .canvas {
   display: none;
+}
+
+.content{
+  background-color: aqua;
 }

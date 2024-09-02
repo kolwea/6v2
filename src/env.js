@@ -17,6 +17,13 @@ export const env = createEnv({
     NODE_ENV: z
       .enum(["development", "test", "production"])
       .default("development"),
+    RESEND_API_KEY: z
+      .string(),
+    TWILIO_ACCOUNT_SID: z.string(),
+    TWILIO_AUTH_TOKEN: z.string(),
+    TWILIO_SERVICE_ID: z.string(),
+    SUPABASE_KEY : z.string(),
+    SUPABASE_API_URL : z.string(),
   },
 
   /**
@@ -35,6 +42,12 @@ export const env = createEnv({
   runtimeEnv: {
     DATABASE_URL: process.env.DATABASE_URL,
     NODE_ENV: process.env.NODE_ENV,
+    RESEND_API_KEY: process.env.RESEND_API_KEY,
+    TWILIO_ACCOUNT_SID: process.env.TWILIO_ACCOUNT_SID,
+    TWILIO_AUTH_TOKEN: process.env.TWILIO_AUTH_TOKEN,
+    TWILIO_SERVICE_ID: process.env.TWILIO_SERVICE_ID,
+    SUPABASE_KEY : process.env.SUPABASE_KEY,
+    SUPABASE_API_URL: process.env.SUPABASE_API_URL,
     // NEXT_PUBLIC_CLIENTVAR: process.env.NEXT_PUBLIC_CLIENTVAR,
   },
   /**

@@ -8,7 +8,6 @@ const setupInitalSceneControls = (containerRef: React.RefObject<HTMLDivElement>)
     const scene = new THREE.Scene();
     const camera = new THREE.OrthographicCamera(window.innerWidth / - 2, window.innerWidth / 2, window.innerHeight / 2, window.innerHeight / - 2, -20000, 20000);
 
-    // camera.position.set(1, 1, 1);
     camera.quaternion.setFromEuler(new THREE.Euler(-1.57, 0, 0));
 
     const renderer = new THREE.WebGLRenderer();
@@ -29,6 +28,8 @@ const setupInitalSceneControls = (containerRef: React.RefObject<HTMLDivElement>)
 
     window.addEventListener('resize', onWindowResize);
 
+    onWindowResize()
+
     return { scene, camera, renderer, onWindowResize }
 }
 
@@ -41,15 +42,13 @@ const ThreeScene = ({
 
     useEffect(() => {
         if (typeof window !== 'undefined') {
-            const { scene, camera, renderer, onWindowResize } = setupInitalSceneControls(containerRef)
-
-            // const geometry = new THREE.BoxGeometry();
-            // const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
-            // const cube = new THREE.Mesh(geometry, material);
+            const { scene, camera, renderer } = setupInitalSceneControls(containerRef)
             const loader = new GLTFLoader();
 
             const logoGroup = new THREE.Group();
             const standGroup = new THREE.Group();
+            const lightGroup = new THREE.Group();
+
             let light: THREE.Group<THREE.Object3DEventMap>;
             let logo: THREE.Group<THREE.Object3DEventMap>;
             let floor: THREE.Group<THREE.Object3DEventMap>;
@@ -58,23 +57,24 @@ const ThreeScene = ({
             // load logo
             loader.load(
                 // resource URL
-                '/models/gltf/6ixLogo.glb',
+                '/models/gltf/6ixLogoF.gltf',
                 // called when the resource is loaded
                 function (gltf) {
                     // setLogoRef(gltf)
                     logo = gltf.scene
                     logoGroup.add(logo)
-                    // logo.position.set(0, -1.05, 0)
-                    logoGroup.position.set(0, 1, 0)
-                    gltf.animations; // Array<THREE.AnimationClip>
-                    gltf.scene; // THREE.Group
-                    gltf.scenes; // Array<THREE.Group>
-                    gltf.cameras; // Array<THREE.Camera>
-                    gltf.asset
+                    logo.position.set(0, -2, 0)
+                    logo.scale.set(2, 2, 2)
+                    logoGroup.position.set(0, 3, 0)
+                    // gltf.animations; // Array<THREE.AnimationClip>
+                    // gltf.scene; // THREE.Group
+                    // gltf.scenes; // Array<THREE.Group>
+                    // gltf.cameras; // Array<THREE.Camera>
+                    // gltf.asset
                 },
                 // called while loading is progressing
                 function (xhr) {
-                    console.log((xhr.loaded / xhr.total * 100) + '% loaded');
+                    // console.log((xhr.loaded / xhr.total * 100) + '% loaded');
                 },
                 // called when loading has errors
                 function (error) {
@@ -90,16 +90,17 @@ const ThreeScene = ({
                     stand = gltf.scene
                     standGroup.add(stand)
                     stand.position.set(0, -0.6, 0)
-                    standGroup.position.set(0, 1, 0)
-                    gltf.animations; // Array<THREE.AnimationClip>
-                    gltf.scene; // THREE.Group
-                    gltf.scenes; // Array<THREE.Group>
-                    gltf.cameras; // Array<THREE.Camera>
-                    gltf.asset
+                    stand.scale.set(3, 3, 3)
+                    standGroup.position.set(4, 10, 0)
+                    // gltf.animations; // Array<THREE.AnimationClip>
+                    // gltf.scene; // THREE.Group
+                    // gltf.scenes; // Array<THREE.Group>
+                    // gltf.cameras; // Array<THREE.Camera>
+                    // gltf.asset
                 },
                 // called while loading is progressing
                 function (xhr) {
-                    console.log((xhr.loaded / xhr.total * 100) + '% loaded');
+                    // console.log((xhr.loaded / xhr.total * 100) + '% loaded');
                 },
                 // called when loading has errors
                 function (error) {
@@ -114,16 +115,19 @@ const ThreeScene = ({
                 function (gltf) {
                     // setLogoRef(gltf)
                     light = gltf.scene
-                    scene.add(light)
-                    gltf.animations; // Array<THREE.AnimationClip>
-                    gltf.scene; // THREE.Group
-                    gltf.scenes; // Array<THREE.Group>
-                    gltf.cameras; // Array<THREE.Camera>
-                    gltf.asset
+                    lightGroup.add(light)
+                    scene.add(lightGroup)
+                    light.scale.set(3, 3, 3)
+                    lightGroup.position.set(4, 6, 0)
+                    // gltf.animations; // Array<THREE.AnimationClip>
+                    // gltf.scene; // THREE.Group
+                    // gltf.scenes; // Array<THREE.Group>
+                    // gltf.cameras; // Array<THREE.Camera>
+                    // gltf.asset
                 },
                 // called while loading is progressing
                 function (xhr) {
-                    console.log((xhr.loaded / xhr.total * 100) + '% loaded');
+                    // console.log((xhr.loaded / xhr.total * 100) + '% loaded');
                 },
                 // called when loading has errors
                 function (error) {
@@ -139,15 +143,15 @@ const ThreeScene = ({
                     // setLogoRef(gltf)
                     floor = gltf.scene
                     scene.add(floor)
-                    gltf.animations; // Array<THREE.AnimationClip>
-                    gltf.scene; // THREE.Group
-                    gltf.scenes; // Array<THREE.Group>
-                    gltf.cameras; // Array<THREE.Camera>
-                    gltf.asset
+                    // gltf.animations; // Array<THREE.AnimationClip>
+                    // gltf.scene; // THREE.Group
+                    // gltf.scenes; // Array<THREE.Group>
+                    // gltf.cameras; // Array<THREE.Camera>
+                    // gltf.asset
                 },
                 // called while loading is progressing
                 function (xhr) {
-                    console.log((xhr.loaded / xhr.total * 100) + '% loaded');
+                    // console.log((xhr.loaded / xhr.total * 100) + '% loaded');
                 },
                 // called when loading has errors
                 function (error) {
@@ -155,27 +159,25 @@ const ThreeScene = ({
 
                 })
 
-            // scene.add(cube);
             scene.add(logoGroup)
-            scene.add(standGroup)
+            // scene.add(standGroup)
             renderer.render(scene, camera);
 
             const renderScene = () => {
-                // standGroup.rotation.z -= 0.01;
-                logoGroup.rotation.z += 0.025;
+                logoGroup.rotation.z += 0.0150;
                 renderer.render(scene, camera);
                 requestAnimationFrame(renderScene);
             };
 
             // Call the renderScene function to start the animation loop
             renderScene();
-            onWindowResize();
         }
     }, []);
 
-    return <div ref={containerRef} className=' bg-[#f0fdfa] overflow-x-clip flex flex-col absolute top-0' style={{ width: "100vw", height: "100vh" }} >
+    return (<div style={{ width: "100vw", height: "100vh" }} >
+        <div ref={containerRef} className=' bg-fixed bg-[#f0fdfa] absolute' />
         {children}
-    </div>;
+    </div>)
 };
 
 export default ThreeScene;
