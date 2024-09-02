@@ -2,21 +2,24 @@
 
 import { Input, Button, Spacer, Radio, RadioGroup } from "@nextui-org/react"
 import { SixLogo } from "../_components/svg/SixLogo"
-import { type FormEvent, useState } from "react"
+import { type FormEvent, useCallback, useState } from "react"
+import { api } from "~/trpc/react";
+import { warn } from "console"
 
 const BasicInfoForm = ({ onSubmitSuccess }: { onSubmitSuccess: () => void }) => {
     const [firstName, setFirstName] = useState("")
     const [lastName, setLastName] = useState("")
     const [phoneNumber, setPhoneNumber] = useState("")
-
     const [formIsLoading, setFormIsLoading] = useState(false);
+
+    const onSignupWithUser = api.user.createUser.useMutation()
 
     const onSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault()
         setFormIsLoading(true)
-        const formData = new FormData(e.currentTarget)
-        console.log({ firstName, lastName, phoneNumber })
-        setTimeout(() => { alert(formData), setFormIsLoading(false), onSubmitSuccess() }, 5000)
+        const res = onSignupWithUser.mutate({ firstName, lastName, cell: phoneNumber })
+        console.log(res)
+        onSubmitSuccess()
     }
 
     return (

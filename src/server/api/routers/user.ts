@@ -1,34 +1,28 @@
-import { warn } from "console";
 import { z } from "zod";
-import { env } from "~/env";
 import { createTRPCRouter, publicProcedure } from "~/server/api/trpc";
 
 export const userRouter = createTRPCRouter({
   createUser: publicProcedure
     .input(
       z.object({
-        first_name: z.string(),
-        last_name: z.string(),
-        cellphone: z.string(),
+        firstName: z.string(),
+        lastName: z.string(),
+        cell: z.string(),
       }),
     )
     .mutation(async ({ ctx, input }) => {
-      const { data, error } = await ctx.supabaseClient.auth.signUp({
-        phone: input.cellphone,
+      const res = await ctx.supabaseClient.auth.signUp({
+        phone: input.cell,
         password: "example-password",
         options: {
           channel: "sms",
           data: {
-            first_name: input.first_name,
-            last_name: input.last_name,
+            first_name: input.firstName,
+            last_name: input.lastName,
           },
         },
       })
       
-      console.log(data)
-      if(error){
-        warn(error)
-      }
-      return data
+      return res
     }),
 });
