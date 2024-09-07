@@ -14,6 +14,7 @@ import { twilioClient } from "./services/Twilio";
 import { prismaClient } from "./services/Prisma";
 import { resendClient } from "./services/Resend";
 import { supabaseClient } from "./services/Supabase";
+import { AuthOtpResponse, AuthResponse, Session } from "@supabase/supabase-js";
 
 /**
  * 1. CONTEXT
@@ -27,7 +28,13 @@ import { supabaseClient } from "./services/Supabase";
  *
  * @see https://trpc.io/docs/server/context
  */
-export const createTRPCContext = async (opts: { headers: Headers }) => {
+interface CreateInnerContextOptions {
+  session?: Session;
+  headers: Headers;
+}
+
+export const createTRPCContext = async (opts: CreateInnerContextOptions) => {
+  // const session = getSession({ req: opts.req });
   return {
     prismaClient,
     resendClient,
@@ -80,3 +87,7 @@ export const createTRPCRouter = t.router;
  * are logged in.
  */
 export const publicProcedure = t.procedure;
+
+// export const protectedProcedure = publicProcedure.use(function isAuthed(opts) {
+//   if(opts.)
+// })

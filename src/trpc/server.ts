@@ -9,18 +9,22 @@ import { callProcedure } from "@trpc/server";
 import { observable } from "@trpc/server/observable";
 import { type TRPCErrorResponse } from "@trpc/server/rpc";
 import { cookies } from "next/headers";
-import { cache } from "react";
+import { cache, useContext } from "react";
 
 import { appRouter } from "~/server/api/root";
 import { createTRPCContext } from "~/server/api/trpc";
 import { transformer } from "./shared";
+import { SessionContext } from "~/app/providers";
 
 /**
  * This wraps the `createTRPCContext` helper and provides the required context for the tRPC API when
  * handling a tRPC call from a React Server Component.
  */
 const createContext = cache(() => {
+  const session = useContext(SessionContext)
+
   return createTRPCContext({
+    session,
     headers: new Headers({
       cookie: cookies().toString(),
       "x-trpc-source": "rsc",

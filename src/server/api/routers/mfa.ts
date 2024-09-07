@@ -28,8 +28,7 @@ export const mfaRouter = createTRPCRouter({
       }),
     )
     .query(async ({ ctx, input }) => {
-      const check = await ctx.twilioClient.verify.v2
-      .services(env.TWILIO_SERVICE_ID)
+      const check = await ctx.twilioClient.verify.v2.services(env.TWILIO_SERVICE_ID)
       .verificationChecks.create(input)
 
       console.log(check)

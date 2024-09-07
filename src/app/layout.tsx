@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/unbound-method */
 import "~/styles/globals.css";
-import { cookies } from "next/headers";
-import { TRPCReactProvider } from "~/trpc/react";
 import { Providers } from "./providers";
+import { TRPCReactProvider } from "~/trpc/react";
+import { cookies } from "next/headers";
 
 export const metadata = {
   title: "the6ixCollective",
