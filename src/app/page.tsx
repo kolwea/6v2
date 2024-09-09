@@ -7,7 +7,7 @@ import Image from "next/image";
 import { Roboto, Bebas_Neue } from 'next/font/google'
 
 
-const founders = localFont({
+export const founders = localFont({
   src: [
     {
       path: 'fonts/Founders_Grotesk/FoundersGrotesk-Regular.otf',
@@ -45,7 +45,7 @@ const founderLight = localFont({
   variable: "--font-founders-light"
 })
 
-const roboto = Roboto({
+export const roboto = Roboto({
   weight: ['100', '400', '700'],
   style: ['normal', 'italic'],
   subsets: ['latin'],

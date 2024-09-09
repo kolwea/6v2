@@ -1,5 +1,5 @@
 "use client"
-import { Spacer, Radio, RadioGroup } from "@nextui-org/react"
+import { Spacer, Radio, RadioGroup, Divider } from "@nextui-org/react"
 import { SixLogo } from "../_components/svg/SixLogo"
 import { useState } from "react";
 import { useSearchParams } from "next/navigation";
@@ -18,14 +18,17 @@ export default function SignupPage({
 
     return (
         <main>
-            <section className="h-screen w-screen bg-white flex">
-                <div className="w-screen top-10 flex bg-blue-200">
+            <section className="h-screen w-screen flex overflow-hidden bg-slate-100">
+                <div className="w-screen top-10 flex">
                     <div className="flex-row">
-                        <div className="logoWrapper mx-4 flex justify-center my-8">
-                            <SixLogo scale={0.2} fill="red" />
-                        </div>
                         <Spacer className="my-10"></Spacer>
-                        <div className="h-[300px]">
+                        <div className="logoWrapper flex justify-center mx-10">
+                            <SixLogo scale={0.25} fill="#631313" />
+                        </div>
+                        <div className="h-[250px]">
+                        <div className=" w-[75%] my-7 flex mx-auto justify-center ">
+                            <Divider className=" bg-slate-300" />
+                        </div>
                             {children}
                         </div>
                         <Spacer className="my-10"></Spacer>
@@ -33,8 +36,9 @@ export default function SignupPage({
                             <RadioGroup
                                 orientation="horizontal"
                                 value={page}
+                                color="secondary"
                             >
-                                <Radio value="info"></Radio>
+                                <Radio value="info" ></Radio>
                                 <Radio value="verify"></Radio>
                                 <Radio value="actions"></Radio>
                             </RadioGroup>
