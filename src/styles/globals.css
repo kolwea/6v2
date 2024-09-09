@@ -85,3 +85,7 @@ main {
     @apply bg-background text-foreground;
   }
 }
+
+.phoneInput{
+  color: black;
+}

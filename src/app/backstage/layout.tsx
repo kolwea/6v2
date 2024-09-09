@@ -20,14 +20,14 @@ export default function SignupPage({
         <main>
             <section className="h-screen w-screen flex overflow-hidden bg-slate-100">
                 <div className="w-screen top-10 flex">
-                    <div className="flex-row">
-                        <Spacer className="my-10"></Spacer>
+                    <div className="flex-row w-[100%] max-w-[1000px] mx-auto">
+                        <Spacer className="my-[15%]"></Spacer>
                         <div className="logoWrapper flex justify-center mx-10">
-                            <SixLogo scale={0.25} fill="#631313" />
+                            <SixLogo scale={0.3} fill="#631313" />
                         </div>
-                        <div className="h-[250px] m-1">
-                            <div className=" w-[75%] my-7 flex mx-auto justify-center ">
-                                <Divider className="bg-slate-300" />
+                        <div className="h-[250px] mx-10 flex-row justify-center">
+                            <div className="my-5 lg:my-10 flex justify-center ">
+                                <Divider className="bg-gray-400 py-[0.55pt]" />
                             </div>
                             {children}
                             <Spacer className="my-10"></Spacer>

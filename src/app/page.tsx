@@ -38,31 +38,32 @@ const SixNavbar = () => <Navbar maxWidth={"full"} className="fixed bg-transparen
 export default async function Home() {
 
   return (
-    <main className={`${founders.className} font-sans bg-white max-w-full`} >
-      <SixNavbar />
-      <Image
-        className="rounded-bl-[100px] mt-[-30%] bg-white"
-        src={cityImage}
-        alt={"City Scape"}
-        priority
-      />
-      <div className={`bg-white ${roboto.className} flex m-5 gap-4 text-black`}>
-        <div className="w-[70%] bg-slate-300 text-[500%]">
-          <div className="flex-row">
-            <div>Creative Agency</div>
-          </div>
-          <div className="inline-flex gap-5">
-            <div className="w-fit font-light"> Meets</div>
-            <div className="w-fit"> Community</div>
-          </div>
+    <main className={`${founders.className} w-[100%] h-[100%] overflow-scroll font-sans bg-white max-w-full`} >
+      <div className='' >
+        <div className='m-4'>
+          <SixNavbar />
         </div>
-        <div className="w-[30%] bg-slate-200">
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris nisl felis, porta sit amet luctus non, vestibulum a lacus. Pellentesque vel ligula nulla. Maecenas tempus congue nunc at rhoncus. Nulla imperdiet dui dui, id efficitur quam vulputate egestas. </p>
+        <Image
+          className="rounded-bl-[100px] mt-[-30%] bg-white"
+          src={cityImage}
+          alt={"City Scape"}
+          priority
+        />
+        <div className={`bg-white ${roboto.className} w-[100%] flex m-6 gap-4 text-black`}>
+          <div className=" justify-between">
+            <div className="inline text-[700%] ">
+              <div>Creative Agency</div>
+              <div className="inline-flex gap-5">
+                <div className="w-fit font-light"> Meets</div>
+                <div className="w-fit"> Community</div>
+              </div>
+            </div>
+            <div className="w-[40%] text-[200%] pl-20 m-auto ">
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris nisl felis, porta sit amet luctus non, vestibulum a lacus. Pellentesque vel ligula nulla. Maecenas tempus congue nunc at rhoncus. Nulla imperdiet dui dui, id efficitur quam vulputate egestas. </p>
+            </div>
+          </div>
         </div>
       </div>
-      {/* <div className="grid min-h-[70vh] grid-cols-1 md:grid-cols-2 items-center"></div> */}
-      {/* <SixHeader /> */}
-      {/* <HeroSection /> */}
     </main >
   );
 }

@@ -131,6 +131,7 @@ const PhoneInput: React.ForwardRefExoticComponent<PhoneInputProps> =
   React.forwardRef<React.ElementRef<typeof RPNInput.default>, PhoneInputProps>(
     ({ className, onChange, ...props }, ref) => {
       return (
+
         <RPNInput.default
           ref={ref}
           className={cn("flex", className)}
@@ -146,7 +147,7 @@ const PhoneInput: React.ForwardRefExoticComponent<PhoneInputProps> =
            *
            * @param {E164Number | undefined} value - The entered value
            */
-          onChange={(value) => { if (value) onChange?.(value) }}
+          onChange={(value) => { onChange?.(value ?? "" as RPNInput.Value) }}
           {...props}
         />
       );
