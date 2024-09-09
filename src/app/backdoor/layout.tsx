@@ -1,9 +1,7 @@
 "use client"
 import { Spacer, Radio, RadioGroup } from "@nextui-org/react"
 import { SixLogo } from "../_components/svg/SixLogo"
-import { api } from "~/trpc/react";
-import { useMemo, useState } from "react";
-import { Session } from "@supabase/supabase-js";
+import { useState } from "react";
 import { useSearchParams } from "next/navigation";
 
 type Page = "info" | "verify" | "actions"
@@ -18,10 +16,6 @@ export default function SignupPage({
     const accessToken = searchParams.get('access_token')
     const refreshToken = searchParams.get('refresh_token')
 
-
-    const onFormSubmitted = () => {
-        setPage("verify");
-    }
     return (
         <main>
             <section className="h-screen w-screen bg-white flex">
