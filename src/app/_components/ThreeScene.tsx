@@ -73,8 +73,8 @@ const ThreeScene = ({
                     // gltf.asset
                 },
                 // called while loading is progressing
-                function (xhr) {
-                    // console.log((xhr.loaded / xhr.total * 100) + '% loaded');
+                function () {
+                    console.log("Loading")
                 },
                 // called when loading has errors
                 function (error) {
@@ -99,8 +99,8 @@ const ThreeScene = ({
                     // gltf.asset
                 },
                 // called while loading is progressing
-                function (xhr) {
-                    // console.log((xhr.loaded / xhr.total * 100) + '% loaded');
+                function () {
+                    console.log("Loading")
                 },
                 // called when loading has errors
                 function (error) {
@@ -126,8 +126,8 @@ const ThreeScene = ({
                     // gltf.asset
                 },
                 // called while loading is progressing
-                function (xhr) {
-                    // console.log((xhr.loaded / xhr.total * 100) + '% loaded');
+                function () {
+                    console.log("Loading")
                 },
                 // called when loading has errors
                 function (error) {
@@ -150,8 +150,8 @@ const ThreeScene = ({
                     // gltf.asset
                 },
                 // called while loading is progressing
-                function (xhr) {
-                    // console.log((xhr.loaded / xhr.total * 100) + '% loaded');
+                function () {
+                    console.log("Loading")
                 },
                 // called when loading has errors
                 function (error) {

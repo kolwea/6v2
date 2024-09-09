@@ -25,27 +25,26 @@ export default function SignupPage({
                         <div className="logoWrapper flex justify-center mx-10">
                             <SixLogo scale={0.25} fill="#631313" />
                         </div>
-                        <div className="h-[250px]">
-                        <div className=" w-[75%] my-7 flex mx-auto justify-center ">
-                            <Divider className=" bg-slate-300" />
-                        </div>
+                        <div className="h-[250px] m-1">
+                            <div className=" w-[75%] my-7 flex mx-auto justify-center ">
+                                <Divider className="bg-slate-300" />
+                            </div>
                             {children}
-                        </div>
-                        <Spacer className="my-10"></Spacer>
-                        <div className="m-4 flex justify-center my-10">
-                            <RadioGroup
-                                orientation="horizontal"
-                                value={page}
-                                color="secondary"
-                            >
-                                <Radio value="info" ></Radio>
-                                <Radio value="verify"></Radio>
-                                <Radio value="actions"></Radio>
-                            </RadioGroup>
+                            <Spacer className="my-10"></Spacer>
+                            <div className=" w-[75%] flex mx-auto justify-center ">
+                                <RadioGroup
+                                    orientation="horizontal"
+                                    value={page}
+                                    color="secondary"
+                                >
+                                    <Radio value="info" ></Radio>
+                                    <Radio value="verify"></Radio>
+                                    <Radio value="actions"></Radio>
+                                </RadioGroup>
+                            </div>
                         </div>
                     </div>
                 </div>
-                {children}
             </section>
         </main>
     )

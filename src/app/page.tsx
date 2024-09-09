@@ -1,63 +1,10 @@
-import localFont from "next/font/local"
 import cityImage from '../../public/IMG_6040.jpg'
 import { Navbar, NavbarBrand, NavbarContent, NavbarItem } from "@nextui-org/react";
 import Link from "next/link";
 import { SixLogo } from "./_components/svg/SixLogo";
 import Image from "next/image";
-import { Roboto, Bebas_Neue } from 'next/font/google'
+import { roboto, founders } from './fonts';
 
-
-export const founders = localFont({
-  src: [
-    {
-      path: 'fonts/Founders_Grotesk/FoundersGrotesk-Regular.otf',
-      weight: '400',
-      style: 'normal',
-    },
-    // {
-    //   path: 'fonts/Founders_Grotesk/FoundersGrotesk-RegularItalic.otf',
-    //   weight: '400',
-    //   style: 'italic',
-    // },
-    // {
-    //   path: '/fonts/Founders_Grotesk/FoundersGrotesk-Light.otf',
-    //   weight: '400',
-    //   style: 'light',
-    // },
-    // {
-    //   path: '/fonts/Founders_Grotesk/FoundersGrotesk-Bold.otf',
-    //   weight: '400',
-    //   style: 'bold',
-    // },
-
-  ],
-  variable: "--font-founders"
-})
-
-const founderLight = localFont({
-  src: [
-    {
-      path: '/fonts/Founders_Grotesk/FoundersGrotesk-Light.otf',
-      weight: '400',
-      style: 'light',
-    }
-  ],
-  variable: "--font-founders-light"
-})
-
-export const roboto = Roboto({
-  weight: ['100', '400', '700'],
-  style: ['normal', 'italic'],
-  subsets: ['latin'],
-  display: 'swap',
-})
-
-const bebas = Bebas_Neue({
-  weight: ['400'],
-  style: ['normal'],
-  subsets: ['latin'],
-  display: 'swap',
-})
 
 const SixNavbar = () => <Navbar maxWidth={"full"} className="fixed bg-transparent" isBlurred={false}>
   <NavbarBrand className="space-x-4 justify-start">

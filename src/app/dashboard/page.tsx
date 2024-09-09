@@ -6,13 +6,6 @@ import { api } from "~/trpc/react"
 
 
 export default function DashboardPage() {
-    // const [user, setUser] = useState({} as AuthOtpResponse)
-
-    // const { data, error, isLoading } = api.user.signInUserOTP.useQuery({
-    //     phoneNumber: "4152127777"
-    // })
-
-
     return (
         < div >
             <Button>
