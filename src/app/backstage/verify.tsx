@@ -5,7 +5,7 @@ import { api } from "~/trpc/react"
 
 export const VerificationForm = ({ phoneNumber }: { phoneNumber: string }) => {
     const useVerificationAttempt = api.user.verifyOTP.useMutation()
-    const { isLoading, data } = useVerificationAttempt
+    const { isLoading } = useVerificationAttempt
     const [code, setCode] = useState("")
 
     return (
@@ -21,7 +21,6 @@ export const VerificationForm = ({ phoneNumber }: { phoneNumber: string }) => {
                         label="0"
                         name="0"
                         onChange={(e) => setCode(e?.currentTarget.value)}
-                        // defaultValue="Elon"
                         className="min-w-screen-xs max-w-screen-sm"
                     />
                 </span>
@@ -33,8 +32,6 @@ export const VerificationForm = ({ phoneNumber }: { phoneNumber: string }) => {
                         Next
                     </Button>
                 </span>
-
-
             </div>
         </div>
     )

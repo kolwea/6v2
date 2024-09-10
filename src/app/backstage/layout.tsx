@@ -4,14 +4,12 @@ import { SixLogo } from "../_components/svg/SixLogo"
 import { useState } from "react";
 import { useSearchParams } from "next/navigation";
 
-type Page = "info" | "verify" | "actions"
 
 export default function SignupPage({
     children, // will be a page or nested layout
 }: {
     children: React.ReactNode
 }) {
-    const [page, setPage] = useState("info" as Page)
     const searchParams = useSearchParams()
     const accessToken = searchParams.get('access_token')
     const refreshToken = searchParams.get('refresh_token')
@@ -30,18 +28,6 @@ export default function SignupPage({
                                 <Divider className="bg-gray-400 py-[0.55pt]" />
                             </div>
                             {children}
-                            <Spacer className="my-10"></Spacer>
-                            <div className=" w-[75%] flex mx-auto justify-center ">
-                                <RadioGroup
-                                    orientation="horizontal"
-                                    value={page}
-                                    color="secondary"
-                                >
-                                    <Radio value="info" ></Radio>
-                                    <Radio value="verify"></Radio>
-                                    <Radio value="actions"></Radio>
-                                </RadioGroup>
-                            </div>
                         </div>
                     </div>
                 </div>

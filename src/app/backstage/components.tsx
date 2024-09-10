@@ -1,7 +1,6 @@
 'use client'
-import { ScrollArea } from "@radix-ui/react-scroll-area";
-import { CommandList, CommandInput, CommandEmpty, CommandGroup, CommandItem } from "cmdk";
-import { CheckIcon, ChevronsUpDown, Command } from "lucide-react";
+import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList } from "cmdk";
+import { CheckIcon, ChevronsUpDown, SearchIcon } from "lucide-react";
 
 import * as React from "react";
 
@@ -11,6 +10,7 @@ import flags from "react-phone-number-input/flags";
 import { Button } from "~/components/ui/button";
 import { Input, type InputProps } from "~/components/ui/input";
 import { Popover, PopoverContent, PopoverTrigger } from "~/components/ui/popover";
+import { ScrollArea } from "~/components/ui/scroll-area";
 import { cn } from "~/lib/utils";
 
 const InputComponent = React.forwardRef<HTMLInputElement, InputProps>(
@@ -46,6 +46,8 @@ const CountrySelect = ({
     [onChange],
   );
 
+  // console.log(options)
+
   return (
     <Popover>
       <PopoverTrigger asChild>
@@ -64,31 +66,38 @@ const CountrySelect = ({
           />
         </Button>
       </PopoverTrigger>
-      <PopoverContent className="w-[300px] p-0">
-        <Command>
+      <PopoverContent className="w-[300px]">
+        <Command className="">
           <CommandList>
             <ScrollArea className="h-72">
-              <CommandInput placeholder="Search country..." />
+              <div className="flex gap-2 ml-[-1px] fixed py-2" >
+                <SearchIcon />
+                <CommandInput placeholder="Search country..." />
+              </div>
               <CommandEmpty>No country found.</CommandEmpty>
-              <CommandGroup>
+              <CommandGroup className="mt-10 ">
                 {options
                   .filter((x) => x.value)
                   .map((option) => (
                     <CommandItem
-                      className="gap-2"
+                      className="gap-2  flex justify-between w-[100%]"
                       key={option.value}
                       onSelect={() => handleSelect(option.value)}
                     >
-                      <FlagComponent
-                        country={option.value}
-                        countryName={option.label}
-                      />
-                      <span className="flex-1 text-sm">{option.label}</span>
-                      {option.value && (
-                        <span className="text-foreground/50 text-sm">
-                          {`+${RPNInput.getCountryCallingCode(option.value)}`}
-                        </span>
-                      )}
+                      <div className=" gap-2 pl-2 w-[100%] flex h-max">
+                        <FlagComponent
+                          country={option.value}
+                          countryName={option.label}
+                        />
+                        <span className="flex-1 text-sm ">{option.label}</span>
+                      </div>
+                      <div className="flex justify-end w-[100%]">
+                        {option.value && (
+                          <span className="text-foreground/50 text-sm text-right">
+                            {`+${RPNInput.getCountryCallingCode(option.value)}`}
+                          </span>
+                        )}
+                      </div>
                       <CheckIcon
                         className={cn(
                           "ml-auto h-4 w-4",
