@@ -10,9 +10,6 @@ export default function SignupPage({
 }: {
     children: React.ReactNode
 }) {
-    const searchParams = useSearchParams()
-    const accessToken = searchParams.get('access_token')
-    const refreshToken = searchParams.get('refresh_token')
 
     return (
         <main>

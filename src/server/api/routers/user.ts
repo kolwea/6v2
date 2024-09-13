@@ -58,8 +58,16 @@ export const userRouter = createTRPCRouter({
 
       return res;
     }),
-  getSession: publicProcedure.query(async ({ ctx }) => {
-    const res = await ctx.supabaseClient.auth.getSession();
+  getUser: publicProcedure.query(async ({ ctx }) => {
+    const res = await ctx.supabaseClient.auth.getUser();
     return res;
   }),
+  refreshToken: publicProcedure
+    .input(z.object({ refresh_token: z.string() }))
+    .mutation(async ({ ctx, input }) => {
+      const response = await ctx.supabaseClient.auth.refreshSession({
+        refresh_token: input.refresh_token,
+      });
+      return response;
+    }),
 });
