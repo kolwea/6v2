@@ -6,8 +6,9 @@ generator client {
 }
 
 datasource db {
-    provider = "sqlite"
-    url      = env("DATABASE_URL")
+    provider     = "mysql"
+    url          = env("DATABASE_URL")
+    relationMode = "prisma"
 }
 
 model Post {
@@ -17,4 +18,14 @@ model Post {
     updatedAt DateTime @updatedAt
 
     @@index([name])
+}
+
+model MailingListUser {
+    id        Int      @id @default(autoincrement())
+    name      String
+    email     String   @unique
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+
+    @@index([email])
 }

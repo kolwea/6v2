@@ -6,11 +6,16 @@
  * TL;DR - This is where all the tRPC server stuff is created and plugged in. The pieces you will
  * need to use are documented accordingly near the end.
  */
-import { initTRPC } from "@trpc/server";
+import { initTRPC, TRPCError } from "@trpc/server";
+
 import superjson from "superjson";
 import { ZodError } from "zod";
 
-import { db } from "~/server/db";
+import { twilioClient } from "./services/Twilio";
+import { prismaClient } from "./services/Prisma";
+import { resendClient } from "./services/Resend";
+import { supabaseClient } from "./services/Supabase";
+import { type Session } from "@supabase/supabase-js";
 
 /**
  * 1. CONTEXT
@@ -24,9 +29,25 @@ import { db } from "~/server/db";
  *
  * @see https://trpc.io/docs/server/context
  */
-export const createTRPCContext = async (opts: { headers: Headers }) => {
+
+type CreateInnerContextOptions = {
+  session?: Session;
+  headers: Headers;
+};
+
+export const createTRPCContext = async (opts: CreateInnerContextOptions) => {
+  const {
+    data: { user },
+  } = await supabaseClient.auth.getUser();
+
+  console.log(user)
+
   return {
-    db,
+    user,
+    prismaClient,
+    resendClient,
+    twilioClient,
+    supabaseClient,
     ...opts,
   };
 };
@@ -74,3 +95,16 @@ export const createTRPCRouter = t.router;
  * are logged in.
  */
 export const publicProcedure = t.procedure;
+
+export const protectedProcedure = t.middleware(({ ctx, next }) => {
+  if (!ctx.user || ctx.user.role !== "authenticated") {
+    throw new TRPCError({ code: "UNAUTHORIZED" });
+  }
+  return next({
+    ctx: {
+      ...ctx,
+      // infers that `user` is non-nullable to downstream resolvers
+      user: ctx.user,
+    },
+  });
+});
